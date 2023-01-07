@@ -1,0 +1,41 @@
+.bar{
+  display: grid;
+  justify-content: center;
+  position: fixed;
+  width: 50px;
+  height: 100%;
+  background-color: rgb(56, 55, 55);
+}
+
+.list{
+  display: grid;
+  align-content: start;
+  margin-top: 20px;
+  grid-row-gap: 20px;
+  li{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    a{
+      color: grey;
+      transition: color .2s;
+    }
+    .active{
+      border-left: 1px solid white;
+    }
+  }
+
+  li:hover{
+    a{
+      color: white;
+      transition: color .2s;
+    }
+  }
+}
+
+
+
+
+.icon{
+  color: greenyellow;
+}
