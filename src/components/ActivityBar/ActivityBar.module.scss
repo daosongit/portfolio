@@ -14,11 +14,21 @@
     width: 50px;
     display: grid;
     justify-content: center;
+    &.active::before {
+      content: '';
+      height: 30px;
+      border-left: 2px solid white;
+      position: absolute;
+    }
   }
 
   .icon {
     color: grey;
     transition: color 0.2s;
+    &.active {
+      cursor: pointer;
+      color: white;
+    }
     &:hover {
       cursor: pointer;
       color: white;
@@ -28,19 +38,20 @@
 }
 
 .hint {
-  display: none;
+  // display: none;
   border: 1px solid grey;
   padding: 0 6px 2px 6px;
   position: absolute;
   left: 51px;
   background-color: rgb(24, 24, 24);
-  cursor: auto;
+  cursor: context-menu;
+  visibility: hidden;
   transition: opacity 0.1s;
 
   &.hovered {
-    display: block;
-    opacity: 1;
-    transition: opacity 0.1s;
+    // display: block;
+    visibility: visible;
+    transition: visibility 1s;
   }
 
   &.Explore {
