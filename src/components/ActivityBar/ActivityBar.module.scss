@@ -1,41 +1,62 @@
-.bar{
-  display: grid;
-  justify-content: center;
+.bar {
   position: fixed;
   width: 50px;
   height: 100%;
   background-color: rgb(56, 55, 55);
 }
 
-.list{
+.list {
+  position: relative;
   display: grid;
-  align-content: start;
   margin-top: 20px;
   grid-row-gap: 20px;
-  li{
+  li {
+    width: 50px;
     display: grid;
     justify-content: center;
-    align-items: center;
-    a{
-      color: grey;
-      transition: color .2s;
-    }
-    .active{
-      border-left: 1px solid white;
-    }
   }
 
-  li:hover{
-    a{
+  .icon {
+    color: grey;
+    transition: color 0.2s;
+    &:hover {
+      cursor: pointer;
       color: white;
-      transition: color .2s;
+      transition: color 0.2s;
     }
   }
 }
 
+.hint {
+  display: none;
+  border: 1px solid grey;
+  padding: 0 6px 2px 6px;
+  position: absolute;
+  left: 51px;
+  background-color: rgb(24, 24, 24);
+  cursor: auto;
+  transition: opacity 0.1s;
 
+  &.hovered {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.1s;
+  }
 
+  &.Explore {
+    top: 5px;
+  }
+  &.About {
+    top: 54px;
+  }
+  &.Settings {
+    top: 103px;
+  }
 
-.icon{
-  color: greenyellow;
+  span {
+    color: grey;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13px;
+  }
 }

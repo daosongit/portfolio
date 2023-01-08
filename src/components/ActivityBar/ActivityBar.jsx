@@ -1,31 +1,35 @@
-import React from 'react';
-import cl from './ActivityBar.module.scss';
+import React, { useEffect } from 'react';
 import { IconContext } from 'react-icons';
-import { ImFilesEmpty as IcoFiles } from 'react-icons/im';
-import { RxAvatar as IcoAvatar } from 'react-icons/rx';
-import { SlSettings as IcoSetting } from 'react-icons/sl';
-import { NavLink } from 'react-router-dom';
+import { generateList } from './generateList';
+import { initEventListener } from './mouseHoverHint';
+import cl from './ActivityBar.module.scss';
 
 export default function ActivityBar() {
+  let timeoutId = undefined;
+
+  const hoverHandler = (target) => {
+    const hint = target.nextSibling;
+    if (hint.classList.contains(cl.hovered) || timeoutId) {
+      clearTimeout(timeoutId);
+      timeoutId = undefined;
+      hint.classList.remove(cl.hovered);
+    } else {
+      timeoutId = setTimeout(() => {
+        hint.classList.add(cl.hovered);
+      }, 600);
+    }
+  };
+
+  useEffect(() => {
+    const icons = document.querySelectorAll(`.${cl.icon}`);
+    initEventListener(hoverHandler, icons);
+  });
+
   return (
     <aside className={cl.bar}>
       <ul className={cl.list}>
         <IconContext.Provider value={{ size: '27' }}>
-          <li>
-            <a href="">
-              <IcoFiles />
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <IcoAvatar />
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <IcoSetting />
-            </a>
-          </li>
+          {generateList(cl.icon, cl.hint)}
         </IconContext.Provider>
       </ul>
     </aside>
