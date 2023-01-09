@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useMenuItemClicked, useMouseEnterHandler, useMouseLeaveHandler } from './useHandler';
-import { ImFilesEmpty as IcoFiles } from 'react-icons/im';
+import { ImFilesEmpty as IcoExplore } from 'react-icons/im';
 import { RxAvatar as IcoAvatar } from 'react-icons/rx';
 import { SlSettings as IcoSetting } from 'react-icons/sl';
 
@@ -8,7 +8,7 @@ export default function MenuListGeneration({ cl }) {
   const timeoutId = useRef(undefined);
 
   const menuItems = [
-    { Explore: <IcoFiles /> },
+    { Explore: <IcoExplore /> },
     { About: <IcoAvatar /> },
     { Settings: <IcoSetting /> },
   ];
