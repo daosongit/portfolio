@@ -14,5 +14,8 @@ export default function PrimarySideBar() {
      'Settings': <Settings /> }
   
   const SideBarComponent = () => sideBarItems[ctx.context.key]
-  return <aside className={barClasses}>{<SideBarComponent />}</aside>;
+  return <aside className={barClasses}>
+    <h1>{ctx.context.key}</h1>
+    {<SideBarComponent />}
+    </aside>;
 }

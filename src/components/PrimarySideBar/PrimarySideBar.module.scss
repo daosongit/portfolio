@@ -1,4 +1,5 @@
 .sidebar {
+  color: whitesmoke;
   position: fixed;
   left: 50px;
   display: none;
@@ -8,5 +9,10 @@
 
   &.shown {
     display: block;
+  }
+
+  h1{
+    font-size: 20px;
+    margin: 10px 0 0 20px;
   }
 }
