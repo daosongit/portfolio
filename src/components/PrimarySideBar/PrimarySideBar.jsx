@@ -7,9 +7,10 @@ import cl from './PrimarySideBar.module.scss';
 
 export default function PrimarySideBar() {
   const ctx = useContext(PrimarySideBarCtx);
-  const barClasses = [cl.sidebar, ctx.context.isShown ? cl.shown : ''].join(' ');
+  // const barClasses = [cl.sidebar, ctx.context.isShown ? cl.shown : ''].join(' ');
+  const barClasses = [cl.sidebar, cl.shown].join(' '); // dev mock
   const sideBarItems = 
-    { 'Explore': <Explorer /> ,
+    { 'Explorer': <Explorer /> ,
      'About': <About /> ,
      'Settings': <Settings /> }
   

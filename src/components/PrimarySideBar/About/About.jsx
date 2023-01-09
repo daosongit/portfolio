@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function AboutSB() {
+export default function About() {
   return <div></div>;
 }
