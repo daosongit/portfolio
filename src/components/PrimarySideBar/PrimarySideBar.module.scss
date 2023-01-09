@@ -1,0 +1,12 @@
+.sidebar {
+  position: fixed;
+  left: 50px;
+  display: none;
+  width: 270px;
+  height: 100vh;
+  background-color: rgb(36, 35, 35);
+
+  &.shown {
+    display: block;
+  }
+}
