@@ -20,11 +20,15 @@ export const useMouseLeaveHandler = (state, setState, key, timeoutId) => {
   setState(newState);
 };
 
-export const useMenuItemClicked = (state, setState, key) => {
+export const useMenuItemClicked = (state, setState, key, ctx) => {
   const newState = [...state];
   newState.forEach((itm) => {
-    if (itm.key === key) itm.isActive = !itm.isActive;
-    else itm.isActive = false;
+    if (itm.key === key) {
+      itm.isActive = !itm.isActive;
+      ctx.setContext({ key: itm.key, isShown: itm.isActive });
+    } else {
+      itm.isActive = false;
+    }
   });
   setState(newState);
 };

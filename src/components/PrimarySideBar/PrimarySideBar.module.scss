@@ -1,0 +1,18 @@
+.sidebar {
+  color: whitesmoke;
+  position: fixed;
+  left: 50px;
+  display: none;
+  width: 270px;
+  height: 100vh;
+  background-color: rgb(36, 35, 35);
+
+  &.shown {
+    display: block;
+  }
+
+  h1{
+    font-size: 20px;
+    margin: 10px 0 0 20px;
+  }
+}
