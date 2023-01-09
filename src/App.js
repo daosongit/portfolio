@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ActivityBar from './components/ActivityBar/ActivityBar';
+import EmptyMainPage from './components/EmptyMainPage/EmptyMainPage';
 import PrimarySideBar from './components/PrimarySideBar/PrimarySideBar';
 export const PrimarySideBarCtx = React.createContext();
 
@@ -10,6 +11,7 @@ export default function App() {
       <PrimarySideBarCtx.Provider value={{ context, setContext }}>
         <ActivityBar />
         <PrimarySideBar />
+        <EmptyMainPage />
       </PrimarySideBarCtx.Provider>
     </div>
   );
