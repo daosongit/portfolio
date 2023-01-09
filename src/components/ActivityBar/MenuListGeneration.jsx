@@ -8,9 +8,9 @@ export default function MenuListGeneration({ cl }) {
   const timeoutId = useRef(undefined);
 
   const menuItems = [
-    { Explore: <IcoExplore /> },
-    { About: <IcoAvatar /> },
-    { Settings: <IcoSetting /> },
+    { 'Explorer': <IcoExplore /> },
+    { 'About': <IcoAvatar /> },
+    { 'Settings': <IcoSetting /> },
   ];
 
   const [stateMenuItems, setStateMenuItems] = useState(
