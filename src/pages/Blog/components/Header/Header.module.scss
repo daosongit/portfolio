@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Moon Dance';
+  src: url(https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap);
+}
+
+.header {
+  h1 {
+    cursor: context-menu;
+    font-family: 'Moon Dance', cursive;
+    font-weight: 700;
+    font-size: 25px;
+  }
+  display: flex;
+  align-items: flex-end;
+  grid-column-gap: 3px;
+}

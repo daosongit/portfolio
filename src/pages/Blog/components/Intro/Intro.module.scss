@@ -1,0 +1,77 @@
+.intro {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  grid-column-gap: 60px;
+
+  img {
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
+}
+
+.description {
+  display: grid;
+  grid-row-gap: 15px;
+  
+  h1,
+  h2 {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-weight: 700;
+    color: #7526dd;
+  }
+
+  p {
+    font-size: 13px;
+  }
+}
+
+.btn {
+  display: flex;
+  grid-column-gap: 10px;
+  justify-content: space-between;
+
+  @media (min-width: 790px) {
+    justify-content: start;
+    grid-column-gap: 30px;
+  }
+
+  @media (max-width: 700px) {
+    justify-content: start;
+    grid-column-gap: 30px;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 5px;
+    font-size: 11px;
+    cursor: pointer;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+  }
+
+  @mixin btn($color, $colorHover) {
+    background-color: $color;
+    &:hover {
+      background-color: $colorHover;
+      transition: background-color 0.2s;
+    }
+  }
+
+  .twitter {
+    @include btn(#1da1f2, #157bba);
+  }
+  .telegram {
+    @include btn(#2ba0d9, #1979a9);
+  }
+  .linkedin {
+    @include btn(#0a66c2, #094e93)
+  }
+}
