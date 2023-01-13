@@ -1,15 +1,7 @@
 .emptyPage {
-  position: relative;
   background-color: rgb(31, 30, 30);
-  width: calc(100vw - 50px);
-  height: 100vh;
-  left: 50px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &.sidebar {
-    width: calc(100vw - 250px);
-    left: 250px;
-  }
 }

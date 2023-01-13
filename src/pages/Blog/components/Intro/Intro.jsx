@@ -7,7 +7,7 @@ import {
   SiLinkedin as IcoLinkedin,
 } from 'react-icons/si';
 
-export default function Intro() {
+export default function Intro({ h1, h2, description }) {
   const contactBtns = [
     { name: 'TWITTER', btn: <IcoTwitter />, href: 'https://twitter.com/' },
     { name: 'LINKEDIN', btn: <IcoLinkedin />, href: 'https://www.linkedin.com/' },
@@ -16,14 +16,9 @@ export default function Intro() {
   return (
     <section className={cl.intro}>
       <div className={cl.description}>
-        <h1>Blog Posts</h1>
-        <h2>I think so, this is it. </h2>
-        <p>
-          Design begins after I begin to think about how to present an experience most successfully,
-          whether a button I put in can solve a problem. The only point in design is not ui design,
-          if the user does not have a good experience at the end of the product, the design will be
-          considered unsuccessful in my opinion.
-        </p>
+        <h1>{h1}</h1>
+        <h2>{h2} </h2>
+        <p>{description}</p>
         <div className={cl.btn}>
           {contactBtns.map((itm, idx) => (
             <a key={idx} href={itm.href} rel="noreferrer" target="_blank">

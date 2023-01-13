@@ -1,39 +1,44 @@
-.explorer{
-  width: 100%;
-  height: 100vh;
+@mixin hovered-item {
+  &:hover {
+    background-color: rgb(42, 42, 43);
+    transition: background-color 0.1s;
+  }
 }
 
-.head{
+.head {
   display: flex;
-  margin-top: 20px ;
+  width: 200px;
+  margin-top: 20px;
   padding: 4px 0 4px 7px;
   align-items: center;
   grid-column-gap: 5px;
   cursor: pointer;
-  &:hover{
-    background-color: rgb(42, 42, 43);
-    transition: background-color .1s;
-  }
+  @include hovered-item;
 }
 
-.title{
+.title {
   font-size: 20px;
 }
 
-.projects{
+.projects {
   display: none;
-  &.drop{
+  a {
+    display: block;
+    color: whitesmoke;
+    cursor: pointer;
+    @include hovered-item;
+
+    &.active {
+      background-color: rgb(50, 50, 52);
+    }
+  }
+  &.drop {
     display: block;
   }
 }
 
-.projectItm{
+.projectItm {
   display: flex;
   padding: 4px 0 4px 30px;
   grid-column-gap: 5px;
-  cursor: pointer;
-  &:hover{
-    background-color: rgb(42, 42, 43);
-    transition: background-color .1s;
-  }
 }

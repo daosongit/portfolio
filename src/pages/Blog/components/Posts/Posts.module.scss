@@ -35,10 +35,11 @@
 
     figcaption {
       color: #7526dd;
+      font-size: 1.2em;
     }
 
     p {
-      font-size: 13px;
+      font-size: 1em;
     }
   }
 
@@ -49,6 +50,7 @@
     color: #7526dd;
     background-color: white;
     transition: border-bottom 0.2s, color 0.2s;
+    font-size: 1.2em;
 
     &:hover {
       cursor: pointer;

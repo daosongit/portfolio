@@ -1,0 +1,24 @@
+.imgWrapper{
+  max-width: 800px;
+  margin: 60px auto;
+  img{
+   width: 100%;
+   border-radius: 10px;
+  }
+ }
+ 
+ .details{
+  display: grid;
+  grid-row-gap: 70px;
+
+  h1{
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+    color: #7526dd;
+  }
+
+  p{
+    font-size: 1.2rem;
+  }
+}
+

@@ -4,5 +4,8 @@
 }
 
 .blog {
-  margin: 20px 60px;
+  margin: 40px 100px;
+  @media (min-width: 1920px) {
+    margin: 40px 200px;
+  }
 }
