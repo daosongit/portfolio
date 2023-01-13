@@ -5,6 +5,7 @@ import PrimarySideBar from './components/PrimarySideBar/PrimarySideBar';
 import Blog, { BlogRoot } from './pages/Blog/Blog';
 import { createBrowserRouter, RouterProvider, useOutlet } from 'react-router-dom';
 import PostDetails from './pages/Blog/PostDetails/PostDetails';
+import Game from './pages/Game/Game';
 export const PrimarySideBarCtx = React.createContext();
 
 const Root = () => {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
             element: <PostDetails />,
           },
         ],
+      },
+      {
+        path: '/game',
+        element: <Game />,
       },
     ],
   },
