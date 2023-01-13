@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Explorer from './Explorer/Explorer';
 import About from './About/About';
 import Settings from './Settings/Settings';

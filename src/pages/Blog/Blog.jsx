@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import cl from './Blog.module.scss';
 import Header from './components/Header/Header';
 import Intro from './components/Intro/Intro';

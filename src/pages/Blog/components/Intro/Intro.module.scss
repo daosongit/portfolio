@@ -35,7 +35,7 @@
 .btn {
   display: flex;
   grid-column-gap: 30px;
-  justify-content: start;
+  justify-content: flex-start;
 
   @media (max-width: 500px) {
     display: none;

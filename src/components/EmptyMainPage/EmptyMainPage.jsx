@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { SiVisualstudio as IcoVS } from 'react-icons/si';
 import cl from './EmptyMainPage.module.scss';
 

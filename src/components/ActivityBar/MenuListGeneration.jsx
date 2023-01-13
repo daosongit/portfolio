@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useRef } from 'react';
 import { useMenuItemClicked, useMouseEnterHandler, useMouseLeaveHandler } from './useHandler';
 import { ImFilesEmpty as IcoExplore } from 'react-icons/im';
 import { RxAvatar as IcoAvatar } from 'react-icons/rx';
