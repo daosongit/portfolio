@@ -8,12 +8,15 @@ import cl from './PrimarySideBar.module.scss';
 export default function PrimarySideBar() {
   const ctx = useContext(PrimarySideBarCtx);
   const barClasses = [cl.sidebar, ctx.context.isShown ? '' : cl.hide].join(' ');
-  const sideBarItems = { 'Explorer': <Explorer />, 'About': <About />, 'Settings': <Settings /> };
+  const sideBarItems = {
+    'Explorer': <Explorer barname="Explorer" />,
+    'About': <About barname="About" />,
+    'Settings': <Settings barname="Settings" />,
+  };
 
   const SideBarComponent = () => sideBarItems[ctx.context.key];
   return (
     <aside className={barClasses}>
-      <h1>{ctx.context.key}</h1>
       <SideBarComponent />
     </aside>
   );

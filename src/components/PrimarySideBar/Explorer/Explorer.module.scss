@@ -5,6 +5,16 @@
   }
 }
 
+.explorer {
+  position: fixed;
+  background-color: rgb(36, 35, 35);
+  height: 100vh;
+  h1 {
+    font-size: 17px;
+    margin: 10px 0 0 20px;
+  }
+}
+
 .head {
   display: flex;
   width: 200px;

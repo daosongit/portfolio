@@ -5,7 +5,7 @@ import { FaReact as IcoReact } from 'react-icons/fa';
 import { SlArrowDown as IcoArrowDown, SlArrowRight as IcoArrowRight } from 'react-icons/sl';
 import { NavLink } from 'react-router-dom';
 
-export default function Explorer() {
+export default function Explorer({ barname }) {
   const [isDropped, setIsDropped] = useState(true);
   const projectList = ['Blog.jsx', 'Game.jsx'];
   const changeIcons = () => {
@@ -24,7 +24,8 @@ export default function Explorer() {
   };
 
   return (
-    <div>
+    <div className={cl.explorer}>
+      <h1>{barname}</h1>
       <div className={cl.head} onClick={() => setIsDropped(!isDropped)}>
         {changeIcons()}
         <span className={cl.title}>Portfolio</span>
