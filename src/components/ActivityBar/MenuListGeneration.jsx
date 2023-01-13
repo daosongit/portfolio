@@ -18,7 +18,8 @@ export default function MenuListGeneration({ cl }) {
   const [stateMenuItems, setStateMenuItems] = useState(
     menuItems.map((itm) => {
       const [key] = Object.keys(itm);
-      return { key, isActive: false, isHover: false };
+      if (key === 'Explorer') return { key, isActive: true, isHover: false };
+      else return { key, isActive: false, isHover: false };
     }),
   );
 

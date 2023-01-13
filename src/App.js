@@ -9,7 +9,7 @@ export const PrimarySideBarCtx = React.createContext();
 
 const Root = () => {
   const outlet = useOutlet();
-  const [context, setContext] = useState({ key: '', isShown: false });
+  const [context, setContext] = useState({ key: 'Explorer', isShown: true });
   return (
     <div style={{ display: 'flex' }}>
       <PrimarySideBarCtx.Provider value={{ context, setContext }}>
