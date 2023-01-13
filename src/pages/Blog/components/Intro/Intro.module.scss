@@ -7,7 +7,7 @@
   grid-column-gap: 40px;
 
   img {
-    @media (max-width: 700px) {
+    @media (max-width: 980px) {
       display: none;
     }
   }
@@ -16,7 +16,7 @@
 .description {
   display: grid;
   grid-row-gap: 15px;
-  
+
   h1,
   h2 {
     font-size: 1.5em;
@@ -34,17 +34,11 @@
 
 .btn {
   display: flex;
-  grid-column-gap: 10px;
-  justify-content: space-between;
+  grid-column-gap: 30px;
+  justify-content: start;
 
-  @media (min-width: 790px) {
-    justify-content: start;
-    grid-column-gap: 30px;
-  }
-
-  @media (max-width: 700px) {
-    justify-content: start;
-    grid-column-gap: 30px;
+  @media (max-width: 500px) {
+    display: none;
   }
 
   button {
@@ -73,6 +67,6 @@
     @include btn(#2ba0d9, #1979a9);
   }
   .linkedin {
-    @include btn(#0a66c2, #094e93)
+    @include btn(#0a66c2, #094e93);
   }
 }

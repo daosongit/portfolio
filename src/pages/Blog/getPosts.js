@@ -1,6 +1,7 @@
 import notebook540 from '../../assets/540x360.jpg';
 import notebook850 from '../../assets/850x480.jpg';
 import notebook1280 from '../../assets/1280x720.jpg';
+import notebook300 from '../../assets/300x220.jpg';
 
 const getPosts = () => [
   {
@@ -8,6 +9,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 1',
     description:
       'Oft du von ja weißt in ich heimat so. Brust gefärbt ich glück sie denkst jedoch, fort ort mutter geschaut.',
@@ -22,6 +24,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 2',
     description:
       'Festzuhalten mild und unbestimmten sich das mit, was wahn erste die stunden nach bilder äolsharfe ich nun. Schwebet jenem sich.',
@@ -37,6 +40,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 3',
     description:
       'E la facciamo quegli noi di, se con maesta nostri nel, le a al coloro nome. Non divina della maesta.',
@@ -52,6 +56,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 4',
     description:
       'There the whose flee reverie low, their agen below parasites he from chaste, the their might condemned by could day.',
@@ -67,6 +72,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 5',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -82,6 +88,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 6',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -97,6 +104,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 7',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -112,6 +120,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 8',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -127,6 +136,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 9',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -142,6 +152,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 10',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -157,6 +168,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 11',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -172,6 +184,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 12',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -187,6 +200,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 14',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -202,6 +216,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 15',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -217,6 +232,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 16',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -232,6 +248,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 17',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -247,6 +264,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 18',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -262,6 +280,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 19',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -277,6 +296,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 20',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -292,6 +312,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 21',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -307,6 +328,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 22',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -322,6 +344,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 23',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',
@@ -337,6 +360,7 @@ const getPosts = () => [
     img540: notebook540,
     img850: notebook850,
     img1280: notebook1280,
+    img300: notebook300,
     title: 'Post 24',
     description:
       'Amet amet no magna ea nonumy elitr dolor. Duo takimata est erat gubergren. Ipsum eos sea ipsum gubergren dolor duo.',

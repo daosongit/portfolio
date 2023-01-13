@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import cl from './Posts.module.scss';
 import { InView } from 'react-intersection-observer';
 import getPosts from '../../getPosts';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Posts() {
   const PostsArray = getPosts();
@@ -31,9 +31,10 @@ export default function Posts() {
       {posts.map((itm) => (
         <figure key={itm.id}>
           <picture>
-            <source media="(max-width: 850px) and (min-width: 700px)" srcSet={itm.img540} />
-            <source media="(max-width: 480px)" srcSet={itm.img540} />
-            <img src={itm.img850} alt={`Post ${itm.id}`} />
+            <source media="(max-width: 770px)" srcSet={itm.img540} />
+            <source media="(max-width: 980px)" srcSet={itm.img850} />
+            <source media="(max-width: 1080px)" srcSet={itm.img300} />
+            <img src={itm.img540} alt={`Post ${itm.id}`} />
           </picture>
           <div className={cl.text}>
             <figcaption>{itm.title}</figcaption>
