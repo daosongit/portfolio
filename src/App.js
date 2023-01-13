@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { createBrowserRouter, RouterProvider, useOutlet } from 'react-router-dom';
+import store from './redux/store';
+
 import ActivityBar from './components/ActivityBar/ActivityBar';
 import EmptyMainPage from './components/EmptyMainPage/EmptyMainPage';
 import PrimarySideBar from './components/PrimarySideBar/PrimarySideBar';
 import Blog, { BlogRoot } from './pages/Blog/Blog';
-import { createBrowserRouter, RouterProvider, useOutlet } from 'react-router-dom';
 import PostDetails from './pages/Blog/PostDetails/PostDetails';
 import Game from './pages/Game/Game';
-export const PrimarySideBarCtx = React.createContext();
 
 const Root = () => {
   const outlet = useOutlet();
-  const [context, setContext] = useState({ key: 'Explorer', isShown: true });
   return (
     <div style={{ display: 'flex' }}>
-      <PrimarySideBarCtx.Provider value={{ context, setContext }}>
-        <ActivityBar />
-        <PrimarySideBar />
-        {outlet || <EmptyMainPage />}
-      </PrimarySideBarCtx.Provider>
+      <ActivityBar />
+      <PrimarySideBar />
+      {outlet || <EmptyMainPage />}
     </div>
   );
 };
@@ -50,5 +49,9 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }

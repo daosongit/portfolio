@@ -3,11 +3,11 @@ import { useMenuItemClicked, useMouseEnterHandler, useMouseLeaveHandler } from '
 import { ImFilesEmpty as IcoExplore } from 'react-icons/im';
 import { RxAvatar as IcoAvatar } from 'react-icons/rx';
 import { SlSettings as IcoSetting } from 'react-icons/sl';
-import { PrimarySideBarCtx } from '../../App';
+import { useDispatch } from 'react-redux';
 
 export default function MenuListGeneration({ cl }) {
+  const dispatch = useDispatch();
   const timeoutId = useRef(undefined);
-  const primarySideBarCtx = useContext(PrimarySideBarCtx);
 
   const menuItems = [
     { 'Explorer': <IcoExplore /> },
@@ -42,13 +42,7 @@ export default function MenuListGeneration({ cl }) {
         <li
           className={currentEl.isActive ? cl.active : ''}
           key={key}
-          onClick={useMenuItemClicked.bind(
-            null,
-            stateMenuItems,
-            setStateMenuItems,
-            key,
-            primarySideBarCtx,
-          )}>
+          onClick={useMenuItemClicked.bind(null, stateMenuItems, setStateMenuItems, key, dispatch)}>
           <span
             onMouseEnter={useMouseEnterHandler.bind(
               null,

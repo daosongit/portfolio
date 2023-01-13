@@ -1,3 +1,5 @@
+import { updateSideBar } from '../../redux/reducers';
+
 export const useMouseEnterHandler = (state, setState, key, timeoutId) => {
   timeoutId.current = setTimeout(() => {
     const idx = state.findIndex((a) => a.key === key);
@@ -20,12 +22,12 @@ export const useMouseLeaveHandler = (state, setState, key, timeoutId) => {
   setState(newState);
 };
 
-export const useMenuItemClicked = (state, setState, key, ctx) => {
+export const useMenuItemClicked = (state, setState, key, dispatch) => {
   const newState = [...state];
   newState.forEach((itm) => {
     if (itm.key === key) {
       itm.isActive = !itm.isActive;
-      ctx.setContext({ key: itm.key, isShown: itm.isActive });
+      dispatch(updateSideBar({ key: itm.key, isShown: itm.isActive }));
     } else {
       itm.isActive = false;
     }
