@@ -4,14 +4,14 @@
 }
 
 .blog {
-  margin: 40px 100px;
+  margin: 80px 100px;
   @media (min-width: 1920px) {
-    margin: 40px 200px;
+    margin: 80px 200px;
   }
   @media (max-width: 770px) {
-    margin: 30px 70px;
+    margin: 80px 70px;
   }
   @media (max-width: 500px) {
-    margin: 20px 40px;
+    margin: 70px 40px;
   }
 }

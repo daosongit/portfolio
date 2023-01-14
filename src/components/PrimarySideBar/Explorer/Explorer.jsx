@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import cl from './Explorer.module.scss';
 import { FcFolder as IcoFolder, FcOpenedFolder as IcoFolderOpen } from 'react-icons/fc';
-import { FaReact as IcoReact } from 'react-icons/fa';
+import { GrReactjs as IcoReact } from 'react-icons/gr';
 import { SlArrowDown as IcoArrowDown, SlArrowRight as IcoArrowRight } from 'react-icons/sl';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addTab } from '../../../redux/reducers';
 
 export default function Explorer({ barname }) {
+  const dispatch = useDispatch();
   const [isDropped, setIsDropped] = useState(true);
   const projectList = ['Blog.jsx', 'Game.jsx'];
   const changeIcons = () => {
@@ -23,6 +26,10 @@ export default function Explorer({ barname }) {
       );
   };
 
+  const updateTabs = (tabName) => {
+    dispatch(addTab({ tabName, link: '' }));
+  };
+
   return (
     <div className={cl.explorer}>
       <h1>{barname}</h1>
@@ -33,6 +40,7 @@ export default function Explorer({ barname }) {
       <ul className={[cl.projects, isDropped ? cl.drop : ''].join(' ')}>
         {projectList.map((itm) => (
           <NavLink
+            onClick={() => updateTabs(itm)}
             key={itm}
             to={`/${itm.slice(0, -4).toLowerCase()}`}
             className={({ isActive }) => (isActive ? cl.active : '')}>

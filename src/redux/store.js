@@ -1,13 +1,11 @@
-import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import rdcPrimarySideBar from './reducers';
+import persistedReducer from './reducers';
+import { persistStore } from 'redux-persist';
+import thunk from 'redux-thunk';
 
-const rootReducer = combineReducers({
-  rdcPrimarySideBar,
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: [thunk],
 });
 
-const store = configureStore({
-  reducer: rootReducer,
-});
-
-export default store;
+export const persistor = persistStore(store);

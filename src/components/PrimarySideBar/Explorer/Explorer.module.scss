@@ -16,10 +16,10 @@
 }
 
 .head {
+  box-sizing: content-box;
   display: flex;
-  width: 200px;
-  margin-top: 20px;
-  padding: 4px 0 4px 7px;
+  width: 193px;
+  margin: 20px 0 4px 7px;
   align-items: center;
   grid-column-gap: 5px;
   cursor: pointer;
