@@ -1,75 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { DEFAULT_CELLS_VALUE, MOVE_DIRECTION, SPEED } from './constants';
 import cl from './Game.module.scss';
+import { useGameLoop, useKeyDownEvent } from './hooks';
+import { checkAvailableSlot, getRandomArr } from './modules';
 
 export default function Game() {
-  const BOARD_SIZE = 10;
-  const DEFAULT_CELLS_VALUE = Array(BOARD_SIZE)
-    .fill(Array(BOARD_SIZE))
-    .fill(Array(BOARD_SIZE).fill(0));
-  const SPEED = 1000;
-  const MOVE_DIRECTION = {
-    up: 'ArrowUp',
-    down: 'ArrowDown',
-    right: 'ArrowRight',
-    left: 'ArrowLeft',
-  };
-  const getRandom = () => {
-    return Math.floor(Math.random() * 10);
-  };
-
   const [snake, setSnake] = useState([]);
-  const [food, setFood] = useState([getRandom(), getRandom()]);
+  const [food, setFood] = useState(getRandomArr());
   const [moveDirection, setMoveDirection] = useState(MOVE_DIRECTION.right);
   const [isDirectionIsChanged, setIsDirectionIsChanged] = useState(false);
   const [isStopped, setIsStopped] = useState(true);
 
-  const checkAvailableSlot = (position) => {
-    switch (true) {
-      case position >= BOARD_SIZE:
-        return 0;
-      case position < 0:
-        return BOARD_SIZE - 1;
-      default:
-        return position;
-    }
-  };
-
-  useEffect(() => {
-    if (isStopped) return;
-    const keyDownHandler = (direction, e) => {
-      if (direction === e.key) {
-        document.addEventListener('keydown', keyDownHandler.bind(null, moveDirection), {
-          once: true,
-        });
-        return;
-      }
-      if (Object.keys(MOVE_DIRECTION).find((key) => MOVE_DIRECTION[key] === e.key)) {
-        setIsDirectionIsChanged(true);
-        setMoveDirection(e.key);
-      }
-    };
-
-    document.addEventListener('keydown', keyDownHandler.bind(null, moveDirection), { once: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [moveDirection, isStopped]);
-
-  useEffect(() => {
-    if (isStopped) return;
-    let timerId;
-    if (isDirectionIsChanged) timerId = gameLoop(0);
-    else timerId = gameLoop(SPEED);
-    return () => {
-      clearTimeout(timerId);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [snake, moveDirection, isStopped]);
-
   const gameLoop = (speed) => {
     if (!snake.length) {
-      setSnake([[getRandom(), getRandom()]]);
+      setSnake([getRandomArr()]);
       return;
     }
-
     const timerId = setTimeout(() => {
       const newSnake = snake;
       let move = [];
@@ -98,7 +44,7 @@ export default function Game() {
 
       let sliceIndex = 1;
       if (head[0] === food[0] && head[1] === food[1]) {
-        setFood([getRandom(), getRandom()]);
+        setFood(getRandomArr());
         sliceIndex = 0;
       }
       setSnake(newSnake.slice(sliceIndex));
@@ -106,6 +52,16 @@ export default function Game() {
     setIsDirectionIsChanged(false);
     return timerId;
   };
+
+  useKeyDownEvent(
+    isStopped,
+    moveDirection,
+    setMoveDirection,
+    setIsDirectionIsChanged,
+    MOVE_DIRECTION,
+  );
+
+  useGameLoop(isStopped, isDirectionIsChanged, snake, moveDirection, gameLoop, SPEED);
 
   return (
     <div className={cl.wrapper}>
