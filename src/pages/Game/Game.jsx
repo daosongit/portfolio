@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DEFAULT_CELLS_VALUE, MOVE_DIRECTION, SPEED } from './constants';
 import cl from './Game.module.scss';
-import { useGameLoop, useKeyDownEvent } from './hooks';
+import { useGameLoop, useGameOverWindow, useKeyDownEvent } from './hooks';
 import { checkAvailableSlot, getRandomArr } from './modules';
 
 export default function Game() {
@@ -10,6 +10,7 @@ export default function Game() {
   const [moveDirection, setMoveDirection] = useState(MOVE_DIRECTION.right);
   const [isDirectionIsChanged, setIsDirectionIsChanged] = useState(false);
   const [isStopped, setIsStopped] = useState(true);
+  const [gameOver, setGameOver] = useState({ isLoosed: false, coordinates: [], isShown: false });
 
   const gameLoop = (speed) => {
     if (!snake.length) {
@@ -42,6 +43,16 @@ export default function Game() {
 
       newSnake.push(head);
 
+      // find arrays with same first value
+      const buff = [...newSnake.filter((a) => a[0] === newSnake.at(-1)[0])];
+      // find dublicates
+      const buff2 = buff.filter((a) => a[1] === newSnake.at(-1)[1]);
+      // if snake has two same arrays then it is eaten yourself
+      if (buff2.length > 1) {
+        const loose = { isLoosed: true, coordinates: buff2[0], isShown: false };
+        setGameOver(loose);
+      }
+
       let sliceIndex = 1;
       if (head[0] === food[0] && head[1] === food[1]) {
         setFood(getRandomArr());
@@ -54,6 +65,7 @@ export default function Game() {
   };
 
   useKeyDownEvent(
+    gameOver.isLoosed,
     isStopped,
     moveDirection,
     setMoveDirection,
@@ -61,20 +73,52 @@ export default function Game() {
     MOVE_DIRECTION,
   );
 
-  useGameLoop(isStopped, isDirectionIsChanged, snake, moveDirection, gameLoop, SPEED);
+  useGameLoop(
+    gameOver.isLoosed,
+    isStopped,
+    isDirectionIsChanged,
+    snake,
+    moveDirection,
+    gameLoop,
+    SPEED,
+  );
+
+  useGameOverWindow(gameOver, setGameOver);
+
+  const GameOver = () => {
+    if (gameOver.isShown) {
+      function newGame() {
+        setSnake([]);
+        setGameOver({ isLoosed: false, coordinates: [], isShown: false });
+      }
+      return (
+        <div className={cl.gameOver}>
+          <h1>GAME OVER</h1> <button onClick={newGame}>New Game</button>
+        </div>
+      );
+    } else return <></>;
+  };
 
   return (
     <div className={cl.wrapper}>
       <button onClick={() => setIsStopped(!isStopped)}>{isStopped ? 'START' : 'STOP'}</button>
-      {DEFAULT_CELLS_VALUE.map((row, idxR) => (
-        <div key={idxR} className={cl.row}>
-          {row.map((cell, idxC) => {
-            let type = snake.find((a) => a[0] === idxR && a[1] === idxC) && 'snake';
-            if (!type) type = food[0] === idxR && food[1] === idxC && 'food';
-            return <div key={idxC} className={[cl.cell, cl[type]].join(' ')}></div>;
-          })}
-        </div>
-      ))}
+      <div className={cl.gameField}>
+        {DEFAULT_CELLS_VALUE.map((row, idxR) => (
+          <div key={idxR} className={cl.row}>
+            {row.map((cell, idxC) => {
+              const coord = gameOver.coordinates;
+              let failedCell = '';
+              if (coord.length && coord[0] === idxR && coord[1] === idxC) {
+                failedCell = cl.failedCell;
+              }
+              let type = snake.find((a) => a[0] === idxR && a[1] === idxC) && cl.snake;
+              if (!type) type = food[0] === idxR && food[1] === idxC && cl.food;
+              return <div key={idxC} className={[cl.cell, type, failedCell].join(' ')}></div>;
+            })}
+          </div>
+        ))}
+      </div>
+      <GameOver />
     </div>
   );
 }

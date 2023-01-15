@@ -4,17 +4,80 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 1px solid black;
+}
+
+.gameField {
+  border: 1px solid grey;
 }
 
 .cell {
   width: 40px;
   height: 40px;
-  border: 1px solid black;
+
+  @keyframes failedCellBlink {
+    0% {
+      background-color: green;
+    }
+    25% {
+      background-color: red;
+    }
+    50% {
+      background-color: green;
+    }
+    100% {
+      background-color: red;
+    }
+  }
+
+  &.snake {
+    background-color: green;
+    &.failedCell {
+      animation: failedCellBlink 0.7s;
+      background-color: red;
+    }
+  }
+
   &.food {
     background-color: yellow;
   }
-  &.snake {
-    background-color: green;
+}
+
+@keyframes gameOverShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.gameOver {
+  animation: gameOverShow 1s;
+  display: grid;
+  grid-row-gap: 20px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  font-size: 2.4rem;
+  border-radius: 10px;
+  padding: 20px 30px;
+  background-color: grey;
+  cursor: context-menu;
+
+  button {
+    margin: auto;
+    width: fit-content;
+    background-color: grey;
+    padding: 3px 7px;
+    border: 2px solid;
+    font-size: 1rem;
+    &:hover {
+      cursor: pointer;
+      color: rgb(201, 201, 201);
+      border-color: black;
+      transition: background-color, color 0.2s;
+    }
   }
 }
 
