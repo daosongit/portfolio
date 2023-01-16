@@ -1,46 +1,30 @@
 .wrapper {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black;
+  display: grid;
+  margin: 60px auto 20px;
+  align-content: center;
+}
+
+.startStop {
+  text-align: center;
+  button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    svg {
+      font-size: 3rem;
+      color: #2c2b2b;
+    }
+  }
 }
 
 .gameField {
-  border: 1px solid grey;
-}
-
-.cell {
-  width: 40px;
-  height: 40px;
-
-  @keyframes failedCellBlink {
-    0% {
-      background-color: green;
-    }
-    25% {
-      background-color: red;
-    }
-    50% {
-      background-color: green;
-    }
-    100% {
-      background-color: red;
-    }
-  }
-
-  &.snake {
-    background-color: green;
-    &.failedCell {
-      animation: failedCellBlink 0.7s;
-      background-color: red;
-    }
-  }
-
-  &.food {
-    background-color: yellow;
-  }
+  border: 1px solid rgb(72, 182, 145);
+  background: linear-gradient(
+    0deg,
+    rgba(6, 234, 237, 1) 0%,
+    rgba(7, 166, 249, 1) 43%,
+    rgba(95, 43, 240, 1) 100%
+  );
 }
 
 @keyframes gameOverShow {
@@ -79,8 +63,4 @@
       transition: background-color, color 0.2s;
     }
   }
-}
-
-.row {
-  display: flex;
 }

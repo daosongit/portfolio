@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 export const useKeyDownEvent = (
+  isGameStarted,
   isLoosed,
   isStopped,
   moveDirection,
@@ -9,6 +10,7 @@ export const useKeyDownEvent = (
   MOVE_DIRECTION,
 ) => {
   useEffect(() => {
+    if (!isGameStarted) return;
     if (isStopped || isLoosed) return;
     const keyDownHandler = (direction, e) => {
       if (direction === e.key) {
@@ -25,10 +27,11 @@ export const useKeyDownEvent = (
 
     document.addEventListener('keydown', keyDownHandler.bind(null, moveDirection), { once: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [moveDirection, isStopped, isLoosed]);
+  }, [moveDirection, isStopped, isLoosed, isGameStarted]);
 };
 
 export const useGameLoop = (
+  isGameStarted,
   isLoosed,
   isStopped,
   isDirectionChanged,
@@ -38,8 +41,8 @@ export const useGameLoop = (
   SPEED,
 ) => {
   useEffect(() => {
+    if (!isGameStarted) return;
     if (isStopped || isLoosed) return;
-
     let timerId;
     if (isDirectionChanged) timerId = gameLoop(0);
     else timerId = gameLoop(SPEED);
@@ -47,18 +50,5 @@ export const useGameLoop = (
       clearTimeout(timerId);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [snake, moveDirection, isStopped, isLoosed]);
-};
-
-export const useGameOverWindow = (gameOver, setGameOver) => {
-  useEffect(() => {
-    if (gameOver.isLoosed) {
-      setTimeout(() => {
-        const as = { ...gameOver };
-        as.isShown = true;
-        setGameOver(as);
-      }, 1000);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gameOver.isLoosed]);
+  }, [snake, moveDirection, isStopped, isLoosed, isGameStarted]);
 };

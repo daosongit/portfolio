@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
-import { DEFAULT_CELLS_VALUE, MOVE_DIRECTION, SPEED } from './constants';
-import cl from './Game.module.scss';
-import { useGameLoop, useGameOverWindow, useKeyDownEvent } from './hooks';
+import Grid from './components/Grid/Grid';
+import MainMenu from './components/MainMenu/MainMenu';
+import { MOVE_DIRECTION, SPEED } from './constants';
+import { useGameLoop, useKeyDownEvent } from './hooks';
 import { checkAvailableSlot, getRandomArr } from './modules';
+import { HiOutlinePlay as IcoPlay, HiOutlinePause as IcoPause } from 'react-icons/hi';
+import cl from './Game.module.scss';
 
 export default function Game() {
   const [snake, setSnake] = useState([]);
-  const [food, setFood] = useState(getRandomArr());
+  const [food, setFood] = useState([]);
   const [moveDirection, setMoveDirection] = useState(MOVE_DIRECTION.right);
   const [isDirectionIsChanged, setIsDirectionIsChanged] = useState(false);
-  const [isStopped, setIsStopped] = useState(true);
+  const [isStopped, setIsStopped] = useState(false);
   const [gameOver, setGameOver] = useState({ isLoosed: false, coordinates: [], isShown: false });
+  const [isGameStarted, setIsGameStarted] = useState(false);
 
   const gameLoop = (speed) => {
+    if (!food.length) {
+      setFood(getRandomArr());
+    }
     if (!snake.length) {
       setSnake([getRandomArr()]);
       return;
@@ -51,6 +58,10 @@ export default function Game() {
       if (buff2.length > 1) {
         const loose = { isLoosed: true, coordinates: buff2[0], isShown: false };
         setGameOver(loose);
+        setTimeout(() => {
+          setIsGameStarted(false);
+        }, 1000);
+        return 0;
       }
 
       let sliceIndex = 1;
@@ -65,6 +76,7 @@ export default function Game() {
   };
 
   useKeyDownEvent(
+    isGameStarted,
     gameOver.isLoosed,
     isStopped,
     moveDirection,
@@ -74,6 +86,7 @@ export default function Game() {
   );
 
   useGameLoop(
+    isGameStarted,
     gameOver.isLoosed,
     isStopped,
     isDirectionIsChanged,
@@ -83,42 +96,30 @@ export default function Game() {
     SPEED,
   );
 
-  useGameOverWindow(gameOver, setGameOver);
-
-  const GameOver = () => {
-    if (gameOver.isShown) {
-      function newGame() {
-        setSnake([]);
-        setGameOver({ isLoosed: false, coordinates: [], isShown: false });
-      }
-      return (
-        <div className={cl.gameOver}>
-          <h1>GAME OVER</h1> <button onClick={newGame}>New Game</button>
-        </div>
-      );
-    } else return <></>;
-  };
-
   return (
     <div className={cl.wrapper}>
-      <button onClick={() => setIsStopped(!isStopped)}>{isStopped ? 'START' : 'STOP'}</button>
+      {isGameStarted ? (
+        <div className={cl.startStop}>
+          <button onClick={() => setIsStopped(!isStopped)}>
+            {isStopped ? <IcoPlay /> : <IcoPause />}
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
+
       <div className={cl.gameField}>
-        {DEFAULT_CELLS_VALUE.map((row, idxR) => (
-          <div key={idxR} className={cl.row}>
-            {row.map((cell, idxC) => {
-              const coord = gameOver.coordinates;
-              let failedCell = '';
-              if (coord.length && coord[0] === idxR && coord[1] === idxC) {
-                failedCell = cl.failedCell;
-              }
-              let type = snake.find((a) => a[0] === idxR && a[1] === idxC) && cl.snake;
-              if (!type) type = food[0] === idxR && food[1] === idxC && cl.food;
-              return <div key={idxC} className={[cl.cell, type, failedCell].join(' ')}></div>;
-            })}
-          </div>
-        ))}
+        {isGameStarted ? (
+          <Grid snake={snake} food={food} isLoosed={gameOver.isLoosed} />
+        ) : (
+          <MainMenu
+            isLoosed={gameOver.isLoosed}
+            setGameOver={setGameOver}
+            setIsGameStarted={setIsGameStarted}
+            setSnake={setSnake}
+          />
+        )}
       </div>
-      <GameOver />
     </div>
   );
 }

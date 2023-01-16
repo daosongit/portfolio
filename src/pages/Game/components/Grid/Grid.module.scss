@@ -1,0 +1,62 @@
+.row {
+  display: flex;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+
+  @media (max-width: 1280px) {
+    width: 40px;
+    height: 40px;
+  }
+
+  svg {
+    font-size: 4em;
+  }
+
+  &.snake {
+    background: linear-gradient(
+      0deg,
+      rgba(18, 78, 4, 1) 0%,
+      rgba(89, 162, 15, 1) 43%,
+      rgba(13, 235, 57, 1) 100%
+    );
+
+    border-radius: 20px;
+    transition: background-color 1s;
+  }
+  &.head {
+    color: green;
+
+    &.failedCell {
+      svg {
+        color: red;
+        animation: failedCellBlink 0.7s;
+      }
+    }
+  }
+
+  &.food {
+    background-color: rgb(255, 208, 0);
+    border-radius: 20px;
+  }
+}
+
+@keyframes failedCellBlink {
+  0% {
+    color: red;
+  }
+  25% {
+    color: green;
+  }
+  50% {
+    color: red;
+  }
+  100% {
+    color: green;
+  }
+}
