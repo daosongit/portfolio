@@ -1,29 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from './components/Grid/Grid';
 import MainMenu from './components/MainMenu/MainMenu';
-import { MOVE_DIRECTION, SPEED } from './constants';
-import { useGameLoop, useKeyDownEvent } from './hooks';
+import { CHALENGES, MOVE_DIRECTION, SPEED } from './constants';
+import { useChalenges, useGameLoop, useKeyDownEvent } from './hooks';
 import { checkAvailableSlot, getRandomArr } from './modules';
-import { HiOutlinePlay as IcoPlay, HiOutlinePause as IcoPause } from 'react-icons/hi';
+import Navigation from './components/Navigation/Navigation';
 import cl from './Game.module.scss';
 
 export default function Game() {
-  const [snake, setSnake] = useState([]);
-  const [food, setFood] = useState([]);
+  const [snake, setSnake] = useState([getRandomArr()]);
+  const [food, setFood] = useState(getRandomArr());
   const [moveDirection, setMoveDirection] = useState(MOVE_DIRECTION.right);
   const [isDirectionIsChanged, setIsDirectionIsChanged] = useState(false);
   const [isStopped, setIsStopped] = useState(false);
   const [gameOver, setGameOver] = useState({ isLoosed: false, coordinates: [], isShown: false });
   const [isGameStarted, setIsGameStarted] = useState(false);
+  const [speed, setSpeed] = useState(SPEED[2]);
+  const [chalenges, setChalenges] = useState(CHALENGES.Default.name);
+  const [chalengesState, setChalengesState] = useState(undefined);
+  const [score, setScore] = useState(0);
 
-  const gameLoop = (speed) => {
-    if (!food.length) {
-      setFood(getRandomArr());
-    }
-    if (!snake.length) {
-      setSnake([getRandomArr()]);
-      return;
-    }
+  useEffect(() => {
+    setScore(snake.length - 1);
+  }, [snake]);
+
+  const gameLoop = (timeout) => {
     const timerId = setTimeout(() => {
       const newSnake = snake;
       let move = [];
@@ -43,6 +44,7 @@ export default function Game() {
         default:
           break;
       }
+
       const head = [
         checkAvailableSlot(newSnake[snake.length - 1][0] + move[0]),
         checkAvailableSlot(newSnake[snake.length - 1][1] + move[1]),
@@ -58,19 +60,29 @@ export default function Game() {
       if (buff2.length > 1) {
         const loose = { isLoosed: true, coordinates: buff2[0], isShown: false };
         setGameOver(loose);
+        //show main menu with delay
         setTimeout(() => {
           setIsGameStarted(false);
         }, 1000);
+
+        const storedScore = localStorage.getItem('score');
+        if (!storedScore || Number(storedScore) < score) {
+          localStorage.setItem('score', score.toString());
+        }
         return 0;
       }
 
       let sliceIndex = 1;
       if (head[0] === food[0] && head[1] === food[1]) {
         setFood(getRandomArr());
+        if (chalengesState) {
+          clearTimeout(chalengesState);
+          setChalengesState(undefined);
+        }
         sliceIndex = 0;
       }
       setSnake(newSnake.slice(sliceIndex));
-    }, speed);
+    }, timeout);
     setIsDirectionIsChanged(false);
     return timerId;
   };
@@ -93,30 +105,50 @@ export default function Game() {
     snake,
     moveDirection,
     gameLoop,
-    SPEED,
+    speed,
+  );
+
+  useChalenges(
+    isStopped,
+    gameOver.isLoosed,
+    isGameStarted,
+    chalenges,
+    speed,
+    chalengesState,
+    setFood,
+    setChalengesState,
   );
 
   return (
     <div className={cl.wrapper}>
-      {isGameStarted ? (
-        <div className={cl.startStop}>
-          <button onClick={() => setIsStopped(!isStopped)}>
-            {isStopped ? <IcoPlay /> : <IcoPause />}
-          </button>
-        </div>
-      ) : (
-        <></>
-      )}
-
+      <Navigation
+        isGameStarted={isGameStarted}
+        isStopped={isStopped}
+        score={score}
+        setIsGameStarted={setIsGameStarted}
+        setIsStopped={setIsStopped}
+      />
       <div className={cl.gameField}>
         {isGameStarted ? (
-          <Grid snake={snake} food={food} isLoosed={gameOver.isLoosed} />
+          <Grid
+            snake={snake}
+            food={food}
+            isLoosed={gameOver.isLoosed}
+            rabbitIsHiding={chalenges === CHALENGES.Rabbit_Is_Hiding.name}
+            chalengesState={chalengesState}
+          />
         ) : (
           <MainMenu
+            speed={speed}
             isLoosed={gameOver.isLoosed}
             setGameOver={setGameOver}
             setIsGameStarted={setIsGameStarted}
             setSnake={setSnake}
+            setSpeed={setSpeed}
+            chalenges={chalenges}
+            setChalenges={setChalenges}
+            setChalengesState={setChalengesState}
+            setIsStopped={setIsStopped}
           />
         )}
       </div>

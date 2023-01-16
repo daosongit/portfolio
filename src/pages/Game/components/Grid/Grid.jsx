@@ -3,7 +3,7 @@ import { DEFAULT_CELLS_VALUE } from '../../constants';
 import { GiRabbit as IcoFood, GiTritonHead as IcoHead } from 'react-icons/gi';
 import cl from './Grid.module.scss';
 
-export default function Grid({ snake, food, isLoosed }) {
+export default function Grid({ snake, food, isLoosed, rabbitIsHiding, chalengesState }) {
   const GridDraw = () => {
     return DEFAULT_CELLS_VALUE.map((row, idxR) => (
       <div key={idxR} className={cl.row}>
@@ -20,8 +20,10 @@ export default function Grid({ snake, food, isLoosed }) {
             type = cl.head;
           } else if (isSnake) {
             type = cl.snake;
-          } else if (isFood) {
-            Icon = () => <IcoFood color={'grey'} />;
+          }
+          if (isFood) {
+            if (!rabbitIsHiding) Icon = () => <IcoFood color={'grey'} />;
+            else if (!chalengesState) Icon = () => <IcoFood color={'grey'} />;
           }
 
           return (

@@ -13,8 +13,7 @@
   height: 100%;
   display: grid;
   justify-content: center;
-  align-content: center;
-  grid-row-gap: 70px;
+  align-content: space-around;
   h1 {
     font-size: 2rem;
     text-align: center;
@@ -23,6 +22,10 @@
     font-size: 1.2rem;
     text-align: center;
   }
+  h4 {
+    text-align: center;
+    font-size: 1.2em;
+  }
   button {
     background-color: rgb(84, 190, 155);
     border: 1px solid aquamarine;
@@ -30,11 +33,54 @@
     font-size: 1.5rem;
     padding: 10px 0;
 
-    &:hover {
+    &:not(.crntSpeed):hover {
       cursor: pointer;
       color: grey;
       border: 1px solid grey;
       transition: color, border 0.2s;
     }
+  }
+
+  .crntSpeed {
+    display: inline-block;
+    background-color: rgb(32, 112, 85);
+    transition: background-color 0.2s;
+  }
+}
+
+.settings {
+  display: grid;
+  grid-row-gap: 30px;
+}
+
+.speed {
+  display: flex;
+  align-items: center;
+  grid-column-gap: 20px;
+  font-size: 1.3rem;
+
+  .btn {
+    display: flex;
+    grid-column-gap: 10px;
+
+    button {
+      padding: 2px 3px;
+    }
+  }
+}
+
+.chalenges {
+  display: flex;
+  grid-column-gap: 20px;
+  h3 {
+    font-size: 1.3rem;
+  }
+  label {
+    font-size: 1.1rem;
+  }
+
+  fieldset {
+    display: grid;
+    grid-row-gap: 10px;
   }
 }

@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { CHALENGES } from './constants';
+import { getRandomArr } from './modules';
 
 export const useKeyDownEvent = (
   isGameStarted,
@@ -17,11 +19,13 @@ export const useKeyDownEvent = (
         document.addEventListener('keydown', keyDownHandler.bind(null, moveDirection), {
           once: true,
         });
-        return;
-      }
-      if (Object.keys(MOVE_DIRECTION).find((key) => MOVE_DIRECTION[key] === e.key)) {
+      } else if (Object.keys(MOVE_DIRECTION).find((key) => MOVE_DIRECTION[key] === e.key)) {
         setIsDirectionChanged(true);
         setDirection(e.key);
+      } else {
+        document.addEventListener('keydown', keyDownHandler.bind(null, moveDirection), {
+          once: true,
+        });
       }
     };
 
@@ -38,17 +42,53 @@ export const useGameLoop = (
   snake,
   moveDirection,
   gameLoop,
-  SPEED,
+  speed,
 ) => {
   useEffect(() => {
     if (!isGameStarted) return;
     if (isStopped || isLoosed) return;
     let timerId;
     if (isDirectionChanged) timerId = gameLoop(0);
-    else timerId = gameLoop(SPEED);
+    else timerId = gameLoop(speed);
     return () => {
       clearTimeout(timerId);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [snake, moveDirection, isStopped, isLoosed, isGameStarted]);
+};
+
+export const useChalenges = (
+  isStopped,
+  isLoosed,
+  isGameStarted,
+  chalenges,
+  speed,
+  chalengesState,
+  setFood,
+  setChalengesState,
+) => {
+  useEffect(() => {
+    if (isStopped || isLoosed || !isGameStarted) return;
+    switch (chalenges) {
+      case CHALENGES.Rabbit_Is_Moving.name:
+        if (!chalengesState) {
+          const id = setTimeout(() => {
+            setFood(getRandomArr());
+            setChalengesState(undefined);
+          }, speed * 7);
+          setChalengesState(id);
+        }
+        break;
+      case CHALENGES.Rabbit_Is_Hiding.name:
+        if (!chalengesState) {
+          const hideId = setTimeout(() => {
+            setChalengesState(hideId);
+          }, speed * 4);
+        }
+        break;
+      default:
+        break;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chalengesState, isStopped, isLoosed, isGameStarted]);
 };

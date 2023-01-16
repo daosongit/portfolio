@@ -4,19 +4,6 @@
   align-content: center;
 }
 
-.startStop {
-  text-align: center;
-  button {
-    cursor: pointer;
-    background: none;
-    border: none;
-    svg {
-      font-size: 3rem;
-      color: #2c2b2b;
-    }
-  }
-}
-
 .gameField {
   border: 1px solid rgb(72, 182, 145);
   background: linear-gradient(
