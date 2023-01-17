@@ -1,74 +1,39 @@
+$color-activity_bar: #333333;
+
 .bar {
   z-index: 2;
   position: sticky;
   top: 0;
-  width: 50px;
   height: 100vh;
-  background-color: rgb(56, 55, 55);
+  background-color: $color-activity_bar;
 }
 
 .list {
   display: grid;
   padding-top: 20px;
-  grid-row-gap: 20px;
-  li {
-    width: 50px;
-    display: grid;
-    justify-content: center;
-    &.active::before {
-      content: '';
-      height: 30px;
-      border-left: 2px solid white;
-      position: absolute;
-    }
-  }
+  grid-row-gap: 15px;
 
-  .icon {
-    color: grey;
-    transition: color 0.2s;
-    &.active {
-      cursor: pointer;
-      color: white;
-    }
-    &:hover {
-      cursor: pointer;
-      color: white;
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-left: 2px solid $color-activity_bar;
+
+    svg {
+      color: grey;
+      font-size: 2rem;
       transition: color 0.2s;
     }
-  }
-}
 
-.hint {
-  // display: none;
-  border: 1px solid grey;
-  padding: 0 6px 2px 6px;
-  position: absolute;
-  left: 51px;
-  background-color: rgb(24, 24, 24);
-  cursor: context-menu;
-  visibility: hidden;
-  transition: opacity 0.1s;
+    &:hover {
+      svg {
+        color: whitesmoke;
+        transition: color 0.2s;
+      }
+    }
 
-  &.hovered {
-    // display: block;
-    visibility: visible;
-    transition: visibility 1s;
-  }
-
-  &.Explore {
-    top: 5px;
-  }
-  &.About {
-    top: 54px;
-  }
-  &.Settings {
-    top: 103px;
-  }
-
-  span {
-    color: grey;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 13px;
+    &.active {
+      border-left: 2px solid white;
+    }
   }
 }

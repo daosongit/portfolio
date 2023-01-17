@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 
 const primarySideBarSlice = createSlice({
   name: 'primarySideBarSlice',
-  initialState: { key: 'Explorer', isShown: true },
+  initialState: {},
   reducers: {
     updateSideBar(state, action) {
       state.key = action.payload.key;

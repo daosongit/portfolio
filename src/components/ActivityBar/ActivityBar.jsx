@@ -1,16 +1,50 @@
-import React from 'react';
-import { IconContext } from 'react-icons';
-import MenuListGeneration from './MenuListGeneration';
+import React, { useEffect } from 'react';
+import { ImFilesEmpty as IcoExplore } from 'react-icons/im';
+import { RxAvatar as IcoAvatar } from 'react-icons/rx';
+import { SlSettings as IcoSetting } from 'react-icons/sl';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { updateSideBar } from '../../redux/reducers';
+import PrimarySideBar from '../PrimarySideBar/PrimarySideBar';
 import cl from './ActivityBar.module.scss';
 
 export default function ActivityBar() {
+  const dispatch = useDispatch();
+  const primarySideBarState = useSelector((state) => state.rdcPrimarySideBar);
+  const location = useLocation();
+  const menuItems = [
+    { key: 'Explorer', icon: <IcoExplore /> },
+    { key: 'About', icon: <IcoAvatar /> },
+    { key: 'Settings', icon: <IcoSetting /> },
+  ];
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      dispatch(updateSideBar({ key: menuItems[0].key, isShown: true }));
+    }
+  }, []);
+
   return (
-    <aside className={cl.bar}>
-      <ul className={cl.list}>
-        <IconContext.Provider value={{ size: '27' }}>
-          <MenuListGeneration cl={cl} />
-        </IconContext.Provider>
-      </ul>
-    </aside>
+    <header>
+      <nav className={cl.bar}>
+        <ul className={cl.list}>
+          {menuItems.map((itm) => {
+            const activeClass = primarySideBarState.key === itm.key ? cl.active : '';
+            return (
+              <li key={itm.key} className={''} title={itm.key}>
+                <button
+                  className={activeClass}
+                  onClick={() =>
+                    dispatch(updateSideBar({ key: itm.key, isShown: !primarySideBarState.isShown }))
+                  }>
+                  {itm.icon}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+      <PrimarySideBar />
+    </header>
   );
 }
