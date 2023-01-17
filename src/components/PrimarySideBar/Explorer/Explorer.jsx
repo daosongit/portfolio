@@ -35,7 +35,7 @@ export default function Explorer({ barname }) {
       <h1>{barname}</h1>
       <div className={cl.head} onClick={() => setIsDropped(!isDropped)}>
         {changeIcons()}
-        <span className={cl.title}>Portfolio</span>
+        <h2>Portfolio</h2>
       </div>
       <ul className={[cl.projects, isDropped ? cl.drop : ''].join(' ')}>
         {projectList.map((itm) => (

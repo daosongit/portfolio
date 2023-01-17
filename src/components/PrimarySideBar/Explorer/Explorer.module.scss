@@ -1,49 +1,53 @@
+$color-primary_bar: #252526;
+$color-primary_bar-active: #37373d;
+$color-text: #cccccc;
+
 @mixin hovered-item {
   &:hover {
-    background-color: rgb(42, 42, 43);
+    background-color: rgba($color-primary_bar-active, 0.7);
     transition: background-color 0.1s;
   }
 }
 
 .explorer {
   position: fixed;
-  background-color: rgb(36, 35, 35);
+  background-color: $color-primary_bar;
+  width: 200px;
   height: 100vh;
   h1 {
-    font-size: 17px;
-    margin: 10px 0 0 20px;
+    font-size: 1rem;
+    margin: 20px 0 0 25px;
   }
 }
 
 .head {
-  box-sizing: content-box;
   display: flex;
-  width: 193px;
-  margin: 20px 0 4px 7px;
+  padding: 20px 0 4px 7px;
   align-items: center;
   grid-column-gap: 5px;
   cursor: pointer;
   @include hovered-item;
-}
 
-.title {
-  font-size: 20px;
+  h2 {
+    font-size: 1.2rem;
+  }
 }
 
 .projects {
   display: none;
+  grid-row-gap: 2px;
   a {
     display: block;
-    color: whitesmoke;
+    color: $color-text;
     cursor: pointer;
     @include hovered-item;
 
     &.active {
-      background-color: rgb(50, 50, 52);
+      background-color: rgba($color-primary_bar-active, 0.7);
     }
   }
   &.drop {
-    display: block;
+    display: grid;
   }
 }
 

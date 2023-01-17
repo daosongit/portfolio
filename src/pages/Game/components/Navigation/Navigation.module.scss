@@ -4,15 +4,21 @@
 
   span {
     align-self: center;
-    font-size: 1.5em;
+    font-size: 1.2rem;
   }
   button {
     cursor: pointer;
     background: none;
     border: none;
     svg {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: #2c2b2b;
+    }
+    &:hover {
+      svg {
+        color: grey;
+        transition: color 0.2s;
+      }
     }
   }
 }

@@ -16,10 +16,25 @@
     grid-row-gap: 15px;
     transition: box-shadow 0.2s;
     border-radius: 10px;
+    background-color: rgb(238, 239, 248);
+    overflow: hidden;
 
-    img {
-      width: 100%;
-      border-radius: 10px;
+    picture {
+      cursor: pointer;
+      transition: transform 0.2s;
+      .imgWrapper {
+        overflow: hidden;
+        img {
+          width: 100%;
+          border-top-left-radius: 10px;
+          transition: transform 0.2s;
+        }
+      }
+
+      &:hover img {
+        transform: scale(1.1);
+        transition: transform 0.2s;
+      }
     }
 
     &:hover {
@@ -48,7 +63,7 @@
     padding: 0 0 10px 10px;
     border: none;
     color: #7526dd;
-    background-color: white;
+    background: none;
     transition: border-bottom 0.2s, color 0.2s;
     font-size: 1.2em;
 

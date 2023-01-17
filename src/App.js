@@ -11,13 +11,13 @@ import Blog, { BlogRoot } from './pages/Blog/Blog';
 import PostDetails from './pages/Blog/PostDetails/PostDetails';
 import Game from './pages/Game/Game';
 import Tabs from './components/Tabs/Tabs';
+import './styles/App.css';
 
 const Root = () => {
   const outlet = useOutlet();
   return (
-    <div style={{ display: 'flex' }}>
+    <div className="App">
       <ActivityBar />
-      <PrimarySideBar />
       <Tabs />
       {outlet || <EmptyMainPage />}
     </div>

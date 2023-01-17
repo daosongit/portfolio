@@ -5,10 +5,18 @@
 
 .header {
   h1 {
-    cursor: context-menu;
+    cursor: pointer;
     font-family: 'Moon Dance', cursive;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 2rem;
+  }
+  img {
+    width: 60px;
+  }
+  @media (max-width: 500px) {
+    img {
+      display: none;
+    }
   }
   display: flex;
   align-items: flex-end;
