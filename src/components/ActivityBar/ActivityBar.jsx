@@ -24,6 +24,14 @@ export default function ActivityBar() {
     }
   }, []);
 
+  const clickHanler = (key) => {
+    if (primarySideBarState.key === key) {
+      dispatch(updateSideBar({ ...primarySideBarState, isShown: !primarySideBarState.isShown }));
+    } else {
+      dispatch(updateSideBar({ key, isShown: true }));
+    }
+  };
+
   return (
     <header>
       <nav className={cl.bar}>
@@ -32,11 +40,7 @@ export default function ActivityBar() {
             const activeClass = primarySideBarState.key === itm.key ? cl.active : '';
             return (
               <li key={itm.key} className={''} title={itm.key}>
-                <button
-                  className={activeClass}
-                  onClick={() =>
-                    dispatch(updateSideBar({ key: itm.key, isShown: !primarySideBarState.isShown }))
-                  }>
+                <button className={activeClass} onClick={() => clickHanler(itm.key)}>
                   {itm.icon}
                 </button>
               </li>
