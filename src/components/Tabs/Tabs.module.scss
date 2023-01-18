@@ -13,10 +13,11 @@ $Light-color-text: #616161;
   position: absolute;
   right: 0;
   background-color: $Dark-color-primary_bar;
+  transition: width linear 0.25s;
 
   &.sidebar {
     width: calc(100% - 250px);
-    transition: width ease-in 0.48s;
+    transition: width linear 0.25s;
   }
 }
 
@@ -24,7 +25,7 @@ $Light-color-text: #616161;
   background-color: $Light-color-primary_bar;
 
   .linkWrapper {
-    color: $Light-color-text;
+    color: black;
     background-color: $Light-color-tabs;
     border-right: 1px solid white;
 

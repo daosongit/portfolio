@@ -8,11 +8,11 @@ $Light-color-text: #616161;
   position: absolute;
   top: 0;
   left: 50px;
-  animation: 0.5s fadeIn;
+  animation: 0.3s fadeIn;
 
   &.hide {
     left: -250px;
-    animation: 0.5s fadeOut;
+    animation: 0.3s fadeOut;
   }
 
   &.light-theme {
