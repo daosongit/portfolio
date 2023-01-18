@@ -2,6 +2,17 @@ import { combineReducers, createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+const themeSlice = createSlice({
+  name: 'themeSlice',
+  initialState: { key: 'Dark', cssSelector: 'dark-theme' },
+  reducers: {
+    changeTheme(state, action) {
+      state.key = action.payload.key;
+      state.cssSelector = action.payload.cssSelector;
+    },
+  },
+});
+
 const primarySideBarSlice = createSlice({
   name: 'primarySideBarSlice',
   initialState: {},
@@ -34,6 +45,7 @@ const tabsSlice = createSlice({
 });
 
 const rootReducer = combineReducers({
+  rdcTheme: themeSlice.reducer,
   rdcPrimarySideBar: primarySideBarSlice.reducer,
   rdcTabs: tabsSlice.reducer,
 });
@@ -41,11 +53,12 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['rdcTabs'],
+  whitelist: ['rdcTabs', 'rdcTheme'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+export const { changeTheme } = themeSlice.actions;
 export const { updateSideBar } = primarySideBarSlice.actions;
 export const { addTab, updateLink, removeTab } = tabsSlice.actions;
 export default persistedReducer;

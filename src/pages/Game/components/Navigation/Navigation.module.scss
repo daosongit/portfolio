@@ -1,3 +1,5 @@
+$color-text: #cccccc;
+
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -6,18 +8,26 @@
     align-self: center;
     font-size: 1.2rem;
   }
-  button {
-    cursor: pointer;
-    background: none;
-    border: none;
-    svg {
-      font-size: 2.5rem;
-      color: #2c2b2b;
-    }
-    &:hover {
+  .btn {
+    button {
+      cursor: pointer;
+      background: none;
+      border: none;
       svg {
-        color: grey;
-        transition: color 0.2s;
+        font-size: 2.5rem;
+        color: #2c2b2b;
+      }
+      &:hover {
+        svg {
+          color: grey;
+          transition: color 0.2s;
+        }
+      }
+    }
+
+    &.dark-theme {
+      svg {
+        color: $color-text;
       }
     }
   }

@@ -1,3 +1,7 @@
+$Dark-color-primary_bar: #252526;
+$Light-color-primary_bar: #f3f3f3;
+$Light-color-text: #616161;
+
 .sidebar {
   z-index: 1;
   color: whitesmoke;
@@ -9,6 +13,28 @@
   &.hide {
     left: -250px;
     animation: 0.5s fadeOut;
+  }
+
+  &.light-theme {
+    color: $Light-color-text;
+    .content {
+      background-color: $Light-color-primary_bar;
+    }
+  }
+}
+
+.content {
+  position: fixed;
+  background-color: $Dark-color-primary_bar;
+  width: 200px;
+  height: 100vh;
+  h1 {
+    font-size: 1rem;
+    margin: 20px 0 0 25px;
+  }
+
+  &.light-theme {
+    background-color: $Light-color-primary_bar;
   }
 }
 

@@ -9,6 +9,7 @@
 }
 
 .mainMenu {
+  color: black;
   width: 100%;
   height: 100%;
   display: grid;
@@ -18,26 +19,24 @@
     font-size: 2rem;
     text-align: center;
   }
-  h2 {
+  h2,
+  h4 {
     font-size: 1.2rem;
     text-align: center;
   }
-  h4 {
-    text-align: center;
-    font-size: 1.2em;
-  }
+
   button {
     background-color: rgb(84, 190, 155);
-    border: 1px solid aquamarine;
     border-radius: 10px;
     font-size: 1.5rem;
     padding: 10px 0;
+    border: none;
+    transition: background-color 0.2s;
 
     &:not(.crntSpeed):hover {
       cursor: pointer;
-      color: grey;
-      border: 1px solid grey;
-      transition: color, border 0.2s;
+      background-color: rgb(53, 125, 101);
+      transition: background-color 0.2s;
     }
   }
 

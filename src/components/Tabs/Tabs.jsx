@@ -6,6 +6,7 @@ import cl from './Tabs.module.scss';
 import { GrReactjs as IcoReact } from 'react-icons/gr';
 
 export default function Tabs() {
+  const themeClass = useSelector((state) => state.rdcTheme.cssSelector);
   const [isClosing, setClosing] = useState(false);
   const navigate = useNavigate();
   const tabs = useSelector((state) => state.rdcTabs.value);
@@ -47,7 +48,10 @@ export default function Tabs() {
   return (
     <>
       {tabs.length ? (
-        <div className={[cl.tabsWrapper, isPrimarySideBarShown ? cl.sidebar : ''].join(' ')}>
+        <div
+          className={[cl.tabsWrapper, cl[themeClass], isPrimarySideBarShown ? cl.sidebar : ''].join(
+            ' ',
+          )}>
           {tabs.map((itm) => (
             <NavLink
               key={itm.tabName}

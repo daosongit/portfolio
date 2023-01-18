@@ -5,9 +5,11 @@ import { CHALENGES, MOVE_DIRECTION, SPEED } from './constants';
 import { useChalenges, useGameLoop, useKeyDownEvent } from './hooks';
 import { checkAvailableSlot, getRandomArr } from './modules';
 import Navigation from './components/Navigation/Navigation';
+import { useSelector } from 'react-redux';
 import cl from './Game.module.scss';
 
 export default function Game() {
+  const themeClass = useSelector((state) => state.rdcTheme.cssSelector);
   const [snake, setSnake] = useState([getRandomArr()]);
   const [food, setFood] = useState(getRandomArr());
   const [moveDirection, setMoveDirection] = useState(MOVE_DIRECTION.right);
@@ -127,6 +129,7 @@ export default function Game() {
         score={score}
         setIsGameStarted={setIsGameStarted}
         setIsStopped={setIsStopped}
+        themeClass={themeClass}
       />
       <div className={cl.gameField}>
         {isGameStarted ? (

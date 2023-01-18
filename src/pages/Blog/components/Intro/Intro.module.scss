@@ -1,3 +1,5 @@
+$color-text: #cccccc;
+
 .intro {
   font-family: 'Montserrat', sans-serif;
   display: flex;
@@ -50,6 +52,10 @@
     border: none;
     padding: 5px 10px;
     color: white;
+  }
+
+  &.dark-theme button {
+    color: rgb(27, 27, 27);
   }
 
   @mixin btn($color, $colorHover) {

@@ -3,8 +3,10 @@ import cl from './Posts.module.scss';
 import { InView } from 'react-intersection-observer';
 import getPosts from '../../getPosts';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function Posts() {
+  const themeClass = useSelector((state) => state.rdcTheme.cssSelector);
   const PostsArray = getPosts();
   const [posts, setPosts] = useState([]);
   const PostLimit = 6;
@@ -29,7 +31,7 @@ export default function Posts() {
   return (
     <section className={cl.posts}>
       {posts.map((itm) => (
-        <figure key={itm.id}>
+        <figure key={itm.id} className={cl[themeClass]}>
           <Link to={`/blog/post/${itm.id}`}>
             <picture>
               <source media="(max-width: 770px)" srcSet={itm.img540} />

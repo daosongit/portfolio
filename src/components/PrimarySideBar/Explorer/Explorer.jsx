@@ -4,10 +4,11 @@ import { FcFolder as IcoFolder, FcOpenedFolder as IcoFolderOpen } from 'react-ic
 import { GrReactjs as IcoReact } from 'react-icons/gr';
 import { SlArrowDown as IcoArrowDown, SlArrowRight as IcoArrowRight } from 'react-icons/sl';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTab } from '../../../redux/reducers';
 
-export default function Explorer({ barname }) {
+export default function Explorer() {
+  const themeClass = useSelector((state) => state.rdcTheme.cssSelector);
   const dispatch = useDispatch();
   const [isDropped, setIsDropped] = useState(true);
   const projectList = ['Blog.jsx', 'Game.jsx'];
@@ -31,8 +32,8 @@ export default function Explorer({ barname }) {
   };
 
   return (
-    <div className={cl.explorer}>
-      <h1>{barname}</h1>
+    <div className={[cl.wrapper, cl[themeClass]].join(' ')}>
+      <h1>Explorer</h1>
       <div className={cl.head} onClick={() => setIsDropped(!isDropped)}>
         {changeIcons()}
         <h2>Portfolio</h2>

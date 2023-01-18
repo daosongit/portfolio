@@ -1,32 +1,35 @@
-$color-primary_bar: #252526;
-$color-primary_bar-active: #37373d;
-$color-text: #cccccc;
+$Dark-color-primary_bar-active: #37373d;
+$Dark-color-text: #cccccc;
+$Light-color-primary_bar-active: #e4e6f1;
+$Light-color-text: #616161;
 
-@mixin hovered-item {
+@mixin hovered-item($color) {
   &:hover {
-    background-color: rgba($color-primary_bar-active, 0.7);
+    background-color: rgba($color, 0.7);
     transition: background-color 0.1s;
   }
 }
 
-.explorer {
-  position: fixed;
-  background-color: $color-primary_bar;
-  width: 200px;
-  height: 100vh;
-  h1 {
-    font-size: 1rem;
-    margin: 20px 0 0 25px;
+.wrapper.light-theme {
+  & .head {
+    @include hovered-item($Light-color-primary_bar-active);
+  }
+  & .projects a {
+    color: $Light-color-text;
+    @include hovered-item($Light-color-primary_bar-active);
+    &.active {
+      background-color: rgba($Light-color-primary_bar-active, 0.7);
+    }
   }
 }
 
 .head {
   display: flex;
-  padding: 20px 0 4px 7px;
+  margin: 20px 0 4px 7px;
   align-items: center;
   grid-column-gap: 5px;
   cursor: pointer;
-  @include hovered-item;
+  @include hovered-item($Dark-color-primary_bar-active);
 
   h2 {
     font-size: 1.2rem;
@@ -38,12 +41,12 @@ $color-text: #cccccc;
   grid-row-gap: 2px;
   a {
     display: block;
-    color: $color-text;
+    color: $Dark-color-text;
     cursor: pointer;
-    @include hovered-item;
+    @include hovered-item($Dark-color-primary_bar-active);
 
     &.active {
-      background-color: rgba($color-primary_bar-active, 0.7);
+      background-color: rgba($Dark-color-primary_bar-active, 0.7);
     }
   }
   &.drop {
@@ -53,6 +56,6 @@ $color-text: #cccccc;
 
 .projectItm {
   display: flex;
-  padding: 4px 0 4px 30px;
+  margin: 4px 0 4px 30px;
   grid-column-gap: 5px;
 }

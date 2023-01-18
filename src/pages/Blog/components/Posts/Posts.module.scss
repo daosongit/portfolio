@@ -1,3 +1,5 @@
+$color-background: #1e1e1e;
+
 .posts {
   font-family: 'Montserrat', sans-serif;
   display: grid;
@@ -21,25 +23,33 @@
 
     picture {
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.3s;
       .imgWrapper {
         overflow: hidden;
         img {
           width: 100%;
           border-top-left-radius: 10px;
-          transition: transform 0.2s;
+          transition: transform 0.3s;
         }
       }
 
       &:hover img {
         transform: scale(1.1);
-        transition: transform 0.2s;
+        transition: transform 0.3s;
       }
     }
 
     &:hover {
       box-shadow: 5px -5px 7px -1px grey;
-      transition: box-shadow 0.2s;
+      transition: box-shadow 0.3s;
+    }
+
+    &.dark-theme {
+      background-color: $color-background;
+      &:hover {
+        box-shadow: 5px -5px 7px -1px black;
+        transition: box-shadow 0.3s;
+      }
     }
   }
 

@@ -22,8 +22,8 @@ export default function Grid({ snake, food, isLoosed, rabbitIsHiding, chalengesS
             type = cl.snake;
           }
           if (isFood) {
-            if (!rabbitIsHiding) Icon = () => <IcoFood color={'grey'} />;
-            else if (!chalengesState) Icon = () => <IcoFood color={'grey'} />;
+            if (!rabbitIsHiding) Icon = () => <IcoFood color={'rgb(81, 79, 79)'} />;
+            else if (!chalengesState) Icon = () => <IcoFood color={'rgb(81, 79, 79)'} />;
           }
 
           return (

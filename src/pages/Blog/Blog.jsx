@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Intro from './components/Intro/Intro';
 import Posts from './components/Posts/Posts';
 import { Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const BlogRoot = () => {
   return (

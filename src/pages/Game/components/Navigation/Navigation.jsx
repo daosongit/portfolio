@@ -12,12 +12,13 @@ export default function Navigation({
   score,
   setIsGameStarted,
   setIsStopped,
+  themeClass,
 }) {
   if (isGameStarted) {
     return (
       <div className={cl.navigation}>
         <span>{score}</span>
-        <div>
+        <div className={[cl.btn, cl[themeClass]].join(' ')}>
           <button title="Go to main menu" onClick={() => setIsGameStarted(false)}>
             <IcoBack />
           </button>

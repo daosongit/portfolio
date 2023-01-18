@@ -6,18 +6,21 @@ import cl from './PrimarySideBar.module.scss';
 import { useSelector } from 'react-redux';
 
 export default function PrimarySideBar() {
+  const themeClass = useSelector((state) => state.rdcTheme.cssSelector);
   const primarySideBar = useSelector((state) => state.rdcPrimarySideBar);
-  const barClasses = [cl.sidebar, primarySideBar.isShown ? '' : cl.hide].join(' ');
+  const barClasses = [cl.sidebar, cl[themeClass], primarySideBar.isShown ? '' : cl.hide].join(' ');
   const sideBarItems = {
-    'Explorer': <Explorer barname="Explorer" />,
-    'About': <About barname="About" />,
-    'Settings': <Settings barname="Settings" />,
+    'Explorer': <Explorer />,
+    'About': <About />,
+    'Settings': <Settings />,
   };
 
   const SideBarComponent = () => sideBarItems[primarySideBar.key];
   return (
     <aside className={barClasses}>
-      <SideBarComponent />
+      <div className={cl.content}>
+        <SideBarComponent />
+      </div>
     </aside>
   );
 }

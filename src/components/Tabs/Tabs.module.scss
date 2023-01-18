@@ -1,7 +1,10 @@
-$color-primary_bar: #252526;
-$color-tabs: #2d2d2d;
-$color-background: #1e1e1e;
-$color-text: #cccccc;
+$Dark-color-primary_bar: #252526;
+$Dark-color-tabs: #2d2d2d;
+$Dark-color-background: #1e1e1e;
+$Dark-color-text: #cccccc;
+$Light-color-primary_bar: #f3f3f3;
+$Light-color-tabs: #ececec;
+$Light-color-text: #616161;
 
 .tabsWrapper {
   display: flex;
@@ -9,7 +12,7 @@ $color-text: #cccccc;
   height: 40px;
   position: absolute;
   right: 0;
-  background-color: $color-primary_bar;
+  background-color: $Dark-color-primary_bar;
 
   &.sidebar {
     width: calc(100% - 250px);
@@ -17,17 +20,40 @@ $color-text: #cccccc;
   }
 }
 
+.tabsWrapper.light-theme {
+  background-color: $Light-color-primary_bar;
+
+  .linkWrapper {
+    color: $Light-color-text;
+    background-color: $Light-color-tabs;
+    border-right: 1px solid white;
+
+    &.active {
+      background-color: white;
+    }
+
+    .close {
+      &::after {
+        color: $Light-color-text;
+      }
+      &:hover::after {
+        background-color: rgb(218, 218, 218);
+      }
+    }
+  }
+}
+
 .linkWrapper {
   position: relative;
   display: flex;
   align-items: center;
-  border-right: 1px solid grey;
-  color: $color-text;
-  background-color: $color-tabs;
+  border-right: 1px solid $Dark-color-background;
+  color: $Dark-color-text;
+  background-color: $Dark-color-tabs;
 
   &.active {
     color: whitesmoke;
-    background-color: $color-background;
+    background-color: $Dark-color-background;
     transition: background-color 0.1s;
   }
 
@@ -37,10 +63,11 @@ $color-text: #cccccc;
     &::after {
       content: '✖';
       font-size: 0.7rem;
-      color: $color-text;
+      color: $Dark-color-text;
       position: relative;
       left: -10px;
       padding: 2px 3px;
+      border-radius: 5px;
     }
     &:hover::after {
       background-color: rgb(102, 100, 100);
