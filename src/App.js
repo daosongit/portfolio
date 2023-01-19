@@ -11,6 +11,7 @@ import PostDetails from './pages/Blog/PostDetails/PostDetails';
 import Game from './pages/Game/Game';
 import Tabs from './components/Tabs/Tabs';
 import './styles/App.scss';
+import ThemePreference from './pages/ThemePreference/ThemePreference';
 
 const Root = () => {
   const themeClass = useSelector((state) => state.rdcTheme.cssSelector);
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: '/game',
         element: <Game />,
+      },
+      {
+        path: '/theme',
+        element: <ThemePreference />,
       },
     ],
   },

@@ -1,0 +1,90 @@
+$Dark-line-color: #9cdcfe;
+$Dark-brace-color: #da70d6;
+$Dark-var-color: #569cd6;
+$Dark-comment-color: #6a9955;
+$Dark-linenumber-color: #858585;
+$Light-line-color: #0451a5;
+$Light-brace-color: #0431fa;
+$Light-var-color: #0000ff;
+$Light-comment-color: #008000;
+$Light-linenumber-color: #5e5e5e;
+
+.wrapper {
+  margin: 100px 60px 60px 60px;
+}
+
+.theme {
+  display: grid;
+  grid-row-gap: 10px;
+}
+
+.line.light-theme {
+  color: $Light-line-color;
+  .brace {
+    color: $Light-brace-color;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 70px;
+      top: 135px;
+      left: 146px;
+      border-left: 1px solid rgb(233, 233, 233);
+    }
+  }
+
+  i {
+    color: $Light-linenumber-color;
+  }
+
+  .title {
+    color: $Light-comment-color;
+  }
+
+  .var {
+    color: $Light-var-color;
+  }
+}
+
+.line {
+  display: flex;
+  grid-column-gap: 30px;
+  color: $Dark-line-color;
+
+  &.indent1 {
+    grid-column-gap: 60px;
+  }
+
+  .brace {
+    color: $Dark-brace-color;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 70px;
+      top: 135px;
+      left: 146px;
+      border-left: 1px solid #333232;
+    }
+  }
+
+  i {
+    color: $Dark-linenumber-color;
+  }
+
+  .title {
+    color: $Dark-comment-color;
+  }
+
+  .var {
+    color: $Dark-var-color;
+    margin-left: 10px;
+  }
+}
+
+.radio {
+  display: grid;
+  grid-auto-flow: column;
+  width: 190px;
+  justify-content: space-between;
+}

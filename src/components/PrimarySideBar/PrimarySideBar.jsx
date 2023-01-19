@@ -1,7 +1,6 @@
 import React from 'react';
 import Explorer from './Explorer/Explorer';
 import About from './About/About';
-import Settings from './Settings/Settings';
 import cl from './PrimarySideBar.module.scss';
 import { useSelector } from 'react-redux';
 
@@ -12,7 +11,6 @@ export default function PrimarySideBar() {
   const sideBarItems = {
     'Explorer': <Explorer />,
     'About': <About />,
-    'Settings': <Settings />,
   };
 
   const SideBarComponent = () => sideBarItems[primarySideBar.key];
