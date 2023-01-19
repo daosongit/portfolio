@@ -1,0 +1,28 @@
+.about {
+  display: grid;
+  grid-row-gap: 20px;
+}
+
+.head {
+  display: flex;
+  grid-column-gap: 5px;
+  margin: 0 0 4px 7px;
+  h2 {
+    font-size: 1.2rem;
+  }
+}
+
+.linkWrapper {
+  display: grid;
+  grid-row-gap: 15px;
+}
+.link {
+  padding-left: 30px;
+  cursor: pointer;
+  display: flex;
+  align-content: center;
+  grid-column-gap: 20px;
+  h3 {
+    align-self: center;
+  }
+}
