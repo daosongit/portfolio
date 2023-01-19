@@ -4,6 +4,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { removeTab, updateLink } from '../../redux/reducers';
 import cl from './Tabs.module.scss';
 import { GrReactjs as IcoReact } from 'react-icons/gr';
+import { VscJson as IcoJson } from 'react-icons/vsc';
 
 export default function Tabs() {
   const themeClass = useSelector((state) => state.rdcTheme.cssSelector);
@@ -14,12 +15,23 @@ export default function Tabs() {
   const dispatch = useDispatch();
   const isPrimarySideBarShown = useSelector((state) => state.rdcPrimarySideBar.isShown);
 
+  const icons = {
+    'jsx': <IcoReact color="rgb(0, 145, 255)" />,
+    'json': <IcoJson color="#FBC02D" />,
+  };
+
   useEffect(() => {
     if (!tabs.length) return;
     const currentTab = {
-      ...tabs.find((a) => a.tabName.slice(0, -4).toLowerCase() === location.pathname.split('/')[1]),
+      ...tabs.find(
+        (a) =>
+          a.tabName.slice(0, a.tabName.indexOf('.')).toLowerCase() ===
+          location.pathname.split('/')[1],
+      ),
     };
+
     if (currentTab.link !== location.pathname) {
+      console.log('set ', location.pathname);
       currentTab.link = location.pathname;
       dispatch(updateLink(currentTab));
     }
@@ -58,7 +70,7 @@ export default function Tabs() {
               className={({ isActive }) => linkClasses(isActive)}
               to={itm.link}>
               <div className={cl.tab}>
-                <IcoReact color="rgb(0, 145, 255)" />
+                {icons[itm.tabName.slice(itm.tabName.indexOf('.') + 1)]}
                 <span to={itm.link} className={cl.link}>
                   {itm.tabName}
                 </span>
