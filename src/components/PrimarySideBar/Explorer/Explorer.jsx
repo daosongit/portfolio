@@ -41,7 +41,10 @@ export default function Explorer() {
       <ul className={[cl.projects, isDropped ? cl.drop : ''].join(' ')}>
         {projectList.map((itm) => (
           <NavLink
-            onClick={() => updateTabs(itm)}
+            onClick={(e) => {
+              e.stopPropagation();
+              updateTabs(itm);
+            }}
             key={itm}
             to={`/${itm.slice(0, -4).toLowerCase()}`}
             className={({ isActive }) => (isActive ? cl.active : '')}>

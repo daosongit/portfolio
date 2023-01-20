@@ -26,7 +26,7 @@ export default function ActivityBar() {
       }
     };
     document.addEventListener('click', clickHandle);
-    return document.removeEventListener('click', clickHandle);
+    return () => document.removeEventListener('click', clickHandle);
   }, [refSettings, isSettingShown]);
 
   useEffect(() => {
@@ -35,7 +35,8 @@ export default function ActivityBar() {
     }
   }, []);
 
-  const onSettingsClickHandle = (key) => {
+  const onMenuClickHandle = (key) => {
+    setIsSettingShown(false);
     if (primarySideBarState.key === key) {
       dispatch(updateSideBar({ ...primarySideBarState, isShown: !primarySideBarState.isShown }));
     } else {
@@ -54,8 +55,13 @@ export default function ActivityBar() {
           {menuItems.map((itm) => {
             const activeClass = primarySideBarState.key === itm.key ? cl.active : '';
             return (
-              <li key={itm.key} className={''} title={itm.key}>
-                <button className={activeClass} onClick={() => onSettingsClickHandle(itm.key)}>
+              <li key={itm.key} title={itm.key}>
+                <button
+                  className={activeClass}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onMenuClickHandle(itm.key);
+                  }}>
                   {itm.icon}
                 </button>
               </li>
