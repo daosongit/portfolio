@@ -5,7 +5,7 @@ import { persistor, store } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import ActivityBar from './components/ActivityBar/ActivityBar';
-import EmptyMainPage from './components/EmptyMainPage/EmptyMainPage';
+import EmptyMainPage from './pages/EmptyMainPage/EmptyMainPage';
 import Blog, { BlogRoot } from './pages/Blog/Blog';
 import PostDetails from './pages/Blog/PostDetails/PostDetails';
 import Game from './pages/Game/Game';
