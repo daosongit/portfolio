@@ -31,7 +31,6 @@ export default function Tabs() {
     };
 
     if (currentTab.link !== location.pathname) {
-      console.log('set ', location.pathname);
       currentTab.link = location.pathname;
       dispatch(updateLink(currentTab));
     }
