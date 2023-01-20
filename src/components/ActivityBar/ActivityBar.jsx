@@ -1,18 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import PrimarySideBar from '../PrimarySideBar/PrimarySideBar';
+import Tabs from '../Tabs/Tabs';
+import { SettingsButton, SettingsMenu } from '../Settings/Settings';
 import { ImFilesEmpty as IcoExplore } from 'react-icons/im';
 import { RxAvatar as IcoAvatar } from 'react-icons/rx';
-import { SlSettings as IcoSetting } from 'react-icons/sl';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
-import { addTab, updateSideBar } from '../../redux/reducers';
-import PrimarySideBar from '../PrimarySideBar/PrimarySideBar';
 import cl from './ActivityBar.module.scss';
 
 export default function ActivityBar() {
-  const refSettings = useRef();
-  const [isSettingShown, setIsSettingShown] = useState(false);
-  const dispatch = useDispatch();
-  const primarySideBarState = useSelector((state) => state.rdcPrimarySideBar);
+  const [isSettingShown, setIsSettingShown] = useState();
+  const [primarySideBar, setPrimarySideBar] = useState({ key: '', isShown: false });
+
   const location = useLocation();
   const menuItems = [
     { key: 'Explorer', icon: <IcoExplore /> },
@@ -20,32 +18,18 @@ export default function ActivityBar() {
   ];
 
   useEffect(() => {
-    const clickHandle = (e) => {
-      if (isSettingShown && refSettings.current !== e.target) {
-        setIsSettingShown(false);
-      }
-    };
-    document.addEventListener('click', clickHandle);
-    return () => document.removeEventListener('click', clickHandle);
-  }, [refSettings, isSettingShown]);
-
-  useEffect(() => {
     if (location.pathname === '/') {
-      dispatch(updateSideBar({ key: menuItems[0].key, isShown: true }));
+      setPrimarySideBar({ key: menuItems[0].key, isShown: true });
     }
   }, []);
 
   const onMenuClickHandle = (key) => {
     setIsSettingShown(false);
-    if (primarySideBarState.key === key) {
-      dispatch(updateSideBar({ ...primarySideBarState, isShown: !primarySideBarState.isShown }));
+    if (primarySideBar.key === key) {
+      setPrimarySideBar({ ...primarySideBar, isShown: !primarySideBar.isShown });
     } else {
-      dispatch(updateSideBar({ key, isShown: true }));
+      setPrimarySideBar({ key, isShown: true });
     }
-  };
-
-  const updateTabs = (tabName) => {
-    dispatch(addTab({ tabName, link: '' }));
   };
 
   return (
@@ -53,7 +37,7 @@ export default function ActivityBar() {
       <nav className={cl.bar}>
         <ul className={cl.list}>
           {menuItems.map((itm) => {
-            const activeClass = primarySideBarState.key === itm.key ? cl.active : '';
+            const activeClass = primarySideBar.key === itm.key ? cl.active : '';
             return (
               <li key={itm.key} title={itm.key}>
                 <button
@@ -67,30 +51,12 @@ export default function ActivityBar() {
               </li>
             );
           })}
-          <li title="Settings">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsSettingShown(!isSettingShown);
-              }}>
-              <IcoSetting />
-            </button>
-          </li>
+          <SettingsButton isShown={isSettingShown} setShown={setIsSettingShown} />
         </ul>
-        <div
-          ref={refSettings}
-          className={[cl.themeSettings, isSettingShown ? cl.show : ''].join(' ')}>
-          <Link
-            onClick={() => {
-              updateTabs('theme.json');
-              setIsSettingShown(!isSettingShown);
-            }}
-            to="/theme">
-            Theme preference
-          </Link>
-        </div>
+        <SettingsMenu isShown={isSettingShown} setShown={setIsSettingShown} />
       </nav>
-      <PrimarySideBar />
+      <PrimarySideBar primarySideBar={primarySideBar} setPrimarySideBar={setPrimarySideBar} />
+      <Tabs isSideBarShown={primarySideBar.isShown} />
     </header>
   );
 }

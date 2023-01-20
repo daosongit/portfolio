@@ -2,13 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import Explorer from './Explorer/Explorer';
 import About from './About/About';
 import cl from './PrimarySideBar.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateSideBar } from '../../redux/reducers';
+import { useSelector } from 'react-redux';
 
-export default function PrimarySideBar() {
+export default function PrimarySideBar({ primarySideBar, setPrimarySideBar }) {
   const themeClass = useSelector((state) => state.rdcTheme.cssSelector);
-  const primarySideBar = useSelector((state) => state.rdcPrimarySideBar);
-  const dispatch = useDispatch();
   const refPrimarySideBarEl = useRef();
   const barClasses = [cl.sidebar, cl[themeClass], primarySideBar.isShown ? '' : cl.hide].join(' ');
   const sideBarItems = {
@@ -19,9 +16,9 @@ export default function PrimarySideBar() {
   useEffect(() => {
     const clickHandler = (e) => {
       const isActivityBar = refPrimarySideBarEl.current.parentElement.contains(e.target);
-      const isPrimaryBar = refPrimarySideBarEl.current.contains(e.target);
-      if (primarySideBar.isShown && !isActivityBar && !isPrimaryBar) {
-        dispatch(updateSideBar({ ...primarySideBar, isShown: false }));
+      const isSideBar = refPrimarySideBarEl.current.contains(e.target);
+      if (primarySideBar.isShown && !isActivityBar && !isSideBar) {
+        setPrimarySideBar(false);
       }
     };
     document.addEventListener('click', clickHandler);

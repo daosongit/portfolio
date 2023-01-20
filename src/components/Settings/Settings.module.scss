@@ -1,0 +1,33 @@
+$Dark-back-color-settings: #2d2d2d;
+
+.themeSettings {
+  visibility: hidden;
+  opacity: 0;
+  width: 200px;
+  padding: 10px 0;
+  background-color: $Dark-back-color-settings;
+  position: relative;
+  left: 50px;
+  bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 5px;
+  box-shadow: -1px -1px 1px rgb(65, 64, 64);
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+
+  a {
+    width: 100%;
+    padding: 5px 0 5px 20px;
+    color: grey;
+
+    &:hover {
+      background-color: #4b4b4b;
+      cursor: pointer;
+    }
+  }
+}

@@ -11,6 +11,7 @@ $Light-color-text: #616161;
   width: calc(100% - 50px);
   height: 40px;
   position: absolute;
+  top: 0;
   right: 0;
   background-color: $Dark-color-primary_bar;
   transition: width linear 0.25s;

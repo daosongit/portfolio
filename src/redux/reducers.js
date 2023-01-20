@@ -13,17 +13,6 @@ const themeSlice = createSlice({
   },
 });
 
-const primarySideBarSlice = createSlice({
-  name: 'primarySideBarSlice',
-  initialState: {},
-  reducers: {
-    updateSideBar(state, action) {
-      state.key = action.payload.key;
-      state.isShown = action.payload.isShown;
-    },
-  },
-});
-
 const tabsSlice = createSlice({
   name: 'tabs',
   initialState: { value: [] },
@@ -46,7 +35,6 @@ const tabsSlice = createSlice({
 
 const rootReducer = combineReducers({
   rdcTheme: themeSlice.reducer,
-  rdcPrimarySideBar: primarySideBarSlice.reducer,
   rdcTabs: tabsSlice.reducer,
 });
 
@@ -59,6 +47,5 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const { changeTheme } = themeSlice.actions;
-export const { updateSideBar } = primarySideBarSlice.actions;
 export const { addTab, updateLink, removeTab } = tabsSlice.actions;
 export default persistedReducer;

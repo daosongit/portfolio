@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { removeTab, updateLink } from '../../redux/reducers';
-import cl from './Tabs.module.scss';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { GrReactjs as IcoReact } from 'react-icons/gr';
 import { VscJson as IcoJson } from 'react-icons/vsc';
+import cl from './Tabs.module.scss';
 
-export default function Tabs() {
+export default function Tabs({ isSideBarShown }) {
   const themeClass = useSelector((state) => state.rdcTheme.cssSelector);
   const [isClosing, setClosing] = useState(false);
   const navigate = useNavigate();
   const tabs = useSelector((state) => state.rdcTabs.value);
   let location = useLocation();
   const dispatch = useDispatch();
-  const isPrimarySideBarShown = useSelector((state) => state.rdcPrimarySideBar.isShown);
 
   const icons = {
     'jsx': <IcoReact color="rgb(0, 145, 255)" />,
@@ -60,9 +59,7 @@ export default function Tabs() {
     <>
       {tabs.length ? (
         <div
-          className={[cl.tabsWrapper, cl[themeClass], isPrimarySideBarShown ? cl.sidebar : ''].join(
-            ' ',
-          )}>
+          className={[cl.tabsWrapper, cl[themeClass], isSideBarShown ? cl.sidebar : ''].join(' ')}>
           {tabs.map((itm) => (
             <NavLink
               key={itm.tabName}
