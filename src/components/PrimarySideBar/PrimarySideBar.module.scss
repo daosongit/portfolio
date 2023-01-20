@@ -4,37 +4,29 @@ $Light-color-text: #3b3b3b;
 
 .sidebar {
   z-index: 1;
-  color: whitesmoke;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 50px;
+  height: 100vh;
+  width: 200px;
   animation: 0.3s fadeIn;
+
+  h1 {
+    font-size: 1rem;
+    margin: 20px 0 0 25px;
+  }
 
   &.hide {
     left: -250px;
     animation: 0.3s fadeOut;
   }
+  background-color: $Dark-color-primary_bar;
 
   &.light-theme {
     color: $Light-color-text;
     .content {
       background-color: $Light-color-primary_bar;
     }
-  }
-}
-
-.content {
-  position: fixed;
-  background-color: $Dark-color-primary_bar;
-  width: 200px;
-  height: 100vh;
-  h1 {
-    font-size: 1rem;
-    margin: 20px 0 0 25px;
-  }
-
-  &.light-theme {
-    background-color: $Light-color-primary_bar;
   }
 }
 

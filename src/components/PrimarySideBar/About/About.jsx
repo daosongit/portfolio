@@ -25,18 +25,18 @@ export default function About() {
   return (
     <div className={cl.about}>
       <h1>About</h1>
-      <div className={cl.head}>
+      <section className={cl.head}>
         <IcoLink size={20} />
         <h2>Links</h2>
-      </div>
-      <div className={cl.linkWrapper}>
+      </section>
+      <section className={cl.linkWrapper}>
         {linksList.map((itm) => (
           <a key={itm.key} className={cl.link} href={itm.href} rel="noreferrer" target="_blank">
             {itm.icon}
             <h3>{itm.key}</h3>
           </a>
         ))}
-      </div>
+      </section>
     </div>
   );
 }

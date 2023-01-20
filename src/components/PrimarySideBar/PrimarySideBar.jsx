@@ -30,9 +30,7 @@ export default function PrimarySideBar({ primarySideBar, setPrimarySideBar }) {
   const SideBarComponent = () => sideBarItems[primarySideBar.key];
   return (
     <aside ref={refPrimarySideBarEl} className={barClasses}>
-      <div className={cl.content}>
-        <SideBarComponent />
-      </div>
+      <SideBarComponent />
     </aside>
   );
 }
