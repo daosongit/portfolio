@@ -20,12 +20,22 @@ export default function ActivityBar() {
   ];
 
   useEffect(() => {
+    const clickHandle = (e) => {
+      if (isSettingShown && refSettings.current !== e.target) {
+        setIsSettingShown(false);
+      }
+    };
+    document.addEventListener('click', clickHandle);
+    return document.removeEventListener('click', clickHandle);
+  }, [refSettings, isSettingShown]);
+
+  useEffect(() => {
     if (location.pathname === '/') {
       dispatch(updateSideBar({ key: menuItems[0].key, isShown: true }));
     }
   }, []);
 
-  const clickHanler = (key) => {
+  const onSettingsClickHandle = (key) => {
     if (primarySideBarState.key === key) {
       dispatch(updateSideBar({ ...primarySideBarState, isShown: !primarySideBarState.isShown }));
     } else {
@@ -45,14 +55,18 @@ export default function ActivityBar() {
             const activeClass = primarySideBarState.key === itm.key ? cl.active : '';
             return (
               <li key={itm.key} className={''} title={itm.key}>
-                <button className={activeClass} onClick={() => clickHanler(itm.key)}>
+                <button className={activeClass} onClick={() => onSettingsClickHandle(itm.key)}>
                   {itm.icon}
                 </button>
               </li>
             );
           })}
           <li title="Settings">
-            <button onClick={() => setIsSettingShown(!isSettingShown)}>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsSettingShown(!isSettingShown);
+              }}>
               <IcoSetting />
             </button>
           </li>
