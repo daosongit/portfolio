@@ -4,8 +4,8 @@ import cl from './EmptyMainPage.module.scss';
 
 export default function EmptyMainPage() {
   return (
-    <section className={cl.emptyPage}>
+    <main className={cl.emptyPage}>
       <IcoVS size={350} style={{ color: 'rgba(24, 23, 23, .4)' }} />
-    </section>
+    </main>
   );
 }

@@ -32,7 +32,7 @@ export default function Intro({ h1, h2, description }) {
           ))}
         </div>
       </div>
-      <img src={introSvg} alt="blog description decoration" style={{ width: '250px' }} />
+      <img src={introSvg} alt="blog decoration" style={{ width: '250px' }} />
     </section>
   );
 }

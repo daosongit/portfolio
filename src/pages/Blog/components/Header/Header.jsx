@@ -11,7 +11,7 @@ export default function Header() {
       <Link to="/blog">
         <h1>Ivan Kulai BLOG</h1>
       </Link>
-      <a href="https://www.linkedin.com">
+      <a href="https://www.linkedin.com" target="_blank">
         <img src={hireSvg} alt="hire me" />
       </a>
     </header>

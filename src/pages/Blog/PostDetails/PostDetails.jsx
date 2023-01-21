@@ -11,7 +11,7 @@ export default function PostDetails() {
   const param = useParams();
   const post = getPosts().find((a) => a.id == param.id);
   return (
-    <main>
+    <>
       <Intro h1="Blog Post" h2={`Post ${post.id}`} description={post.description} />
       <section>
         <div className={cl.imgWrapper}>
@@ -30,6 +30,6 @@ export default function PostDetails() {
           ))}
         </div>
       </section>
-    </main>
+    </>
   );
 }

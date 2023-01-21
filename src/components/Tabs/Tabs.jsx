@@ -58,23 +58,25 @@ export default function Tabs({ isSideBarShown }) {
   return (
     <>
       {tabs.length ? (
-        <div
+        <nav
           className={[cl.tabsWrapper, cl[themeClass], isSideBarShown ? cl.sidebar : ''].join(' ')}>
           {tabs.map((itm) => (
             <NavLink
               key={itm.tabName}
               className={({ isActive }) => linkClasses(isActive)}
               to={itm.link}>
-              <div className={cl.tab}>
+              <section className={cl.tab}>
                 {icons[itm.tabName.slice(itm.tabName.indexOf('.') + 1)]}
-                <span to={itm.link} className={cl.link}>
+                <label to={itm.link} className={cl.link}>
                   {itm.tabName}
-                </span>
-              </div>
-              <div onClick={() => closeTab(itm.tabName)} className={cl.close} />
+                </label>
+              </section>
+              <button onClick={() => closeTab(itm.tabName)} className={cl.close}>
+                ✖
+              </button>
             </NavLink>
           ))}
-        </div>
+        </nav>
       ) : (
         <></>
       )}
