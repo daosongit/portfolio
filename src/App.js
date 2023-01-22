@@ -11,6 +11,7 @@ import PostDetails from './pages/Blog/PostDetails/PostDetails';
 import Game from './pages/Game/Game';
 import './styles/App.scss';
 import ThemePreference from './pages/ThemePreference/ThemePreference';
+import Error from './pages/Error/Error';
 
 const Root = () => {
   const themeClass = useSelector((state) => state.rdcTheme.cssSelector);
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement: <Error />,
     children: [
       {
         path: '/blog',

@@ -1,0 +1,46 @@
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnBack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  border: none;
+  background-color: transparent;
+  svg,
+  label {
+    cursor: pointer;
+  }
+}
+
+.content {
+  height: 100vh;
+  margin: 0 40px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  h1,
+  h2 {
+    text-align: center;
+  }
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  .imgWrapper {
+    max-width: 313px;
+    img {
+      width: 100%;
+      position: relative;
+      right: 30px;
+    }
+  }
+}
