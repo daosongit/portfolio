@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Explorer from './Explorer/Explorer';
 import About from './About/About';
 import cl from './PrimarySideBar.module.scss';
@@ -25,6 +25,7 @@ export default function PrimarySideBar({ primarySideBar, setPrimarySideBar }) {
     return () => {
       document.removeEventListener('click', clickHandler);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refPrimarySideBarEl, primarySideBar.isShown]);
 
   const SideBarComponent = () => sideBarItems[primarySideBar.key];

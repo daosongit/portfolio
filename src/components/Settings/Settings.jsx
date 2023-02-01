@@ -30,6 +30,7 @@ export function SettingsMenu({ isShown, setShown }) {
     };
     document.addEventListener('click', clickHandle);
     return () => document.removeEventListener('click', clickHandle);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refSettings, isShown]);
   return (
     <div ref={refSettings} className={[cl.themeSettings, isShown ? cl.show : ''].join(' ')}>

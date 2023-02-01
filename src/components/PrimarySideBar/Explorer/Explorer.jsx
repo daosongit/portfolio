@@ -50,7 +50,7 @@ export default function Explorer() {
             className={({ isActive }) => (isActive ? cl.active : '')}>
             <li className={cl.projectItm}>
               <IcoReact color="rgb(0, 145, 255)" />
-              <label>{itm}</label>
+              <span>{itm}</span>
             </li>
           </NavLink>
         ))}
