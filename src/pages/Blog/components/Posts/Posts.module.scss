@@ -24,17 +24,10 @@ $color-background: #1e1e1e;
     picture {
       cursor: pointer;
       transition: transform 0.3s;
-      .imgWrapper {
-        overflow: hidden;
-        img {
-          width: 100%;
-          border-top-left-radius: 10px;
-          transition: transform 0.3s;
-        }
-      }
 
-      &:hover img {
-        transform: scale(1.1);
+      img {
+        width: 100%;
+        border-top-left-radius: 10px;
         transition: transform 0.3s;
       }
     }

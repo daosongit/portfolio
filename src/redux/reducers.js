@@ -1,6 +1,21 @@
 import { combineReducers, createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import getPosts from './JsonApi/getPosts';
+
+const postSlice = createSlice({
+  name: 'posts',
+  initialState: { posts: [], loading: true },
+  extraReducers: (builder) => {
+    builder.addCase(getPosts.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getPosts.fulfilled, (state, action) => {
+      state.loading = false;
+      state.posts = action.payload;
+    });
+  },
+});
 
 const themeSlice = createSlice({
   name: 'themeSlice',
@@ -36,6 +51,7 @@ const tabsSlice = createSlice({
 const rootReducer = combineReducers({
   rdcTheme: themeSlice.reducer,
   rdcTabs: tabsSlice.reducer,
+  rdcPosts: postSlice.reducer,
 });
 
 const persistConfig = {
