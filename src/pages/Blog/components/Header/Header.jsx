@@ -10,10 +10,9 @@ export default function Header() {
       <Link to="/blog">
         <h1>Ivan Kulai BLOG</h1>
       </Link>
-      <a href="https://www.linkedin.com" target="_blank">
+      <a href="https://www.linkedin.com" rel="noreferrer" target="_blank">
         <div className={cl.rectangle} />
         <div className={cl.hireme}>Hire me</div>
-        {/* <img src={hireSvg} alt="hire me" /> */}
       </a>
     </header>
   );

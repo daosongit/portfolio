@@ -21,6 +21,7 @@ export default function ActivityBar() {
     if (location.pathname === '/') {
       setPrimarySideBar({ key: menuItems[0].key, isShown: true });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onMenuClickHandle = (key) => {

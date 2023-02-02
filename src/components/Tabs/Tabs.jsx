@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeTab, updateLink } from '../../redux/reducers';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -14,10 +14,10 @@ export default function Tabs({ isSideBarShown }) {
   let location = useLocation();
   const dispatch = useDispatch();
 
-  const icons = {
+  const icons = useRef({
     'jsx': <IcoReact color="rgb(0, 145, 255)" />,
     'json': <IcoJson color="#FBC02D" />,
-  };
+  });
 
   useEffect(() => {
     if (!tabs.length) return;
@@ -66,7 +66,7 @@ export default function Tabs({ isSideBarShown }) {
               className={({ isActive }) => linkClasses(isActive)}
               to={itm.link}>
               <section className={cl.tab}>
-                {icons[itm.tabName.slice(itm.tabName.indexOf('.') + 1)]}
+                {icons.current[itm.tabName.slice(itm.tabName.indexOf('.') + 1)]}
                 <label to={itm.link} className={cl.link}>
                   {itm.tabName}
                 </label>

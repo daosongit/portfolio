@@ -7,7 +7,6 @@ import cl from './Error.module.scss';
 export default function Error() {
   const navigate = useNavigate();
   const error = useRouteError();
-  console.log(error);
   return (
     <main className={cl.error}>
       <button className={cl.btnBack} onClick={() => navigate(-1)}>
