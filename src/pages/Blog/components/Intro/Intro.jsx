@@ -17,7 +17,7 @@ export default function Intro({ h1, h2, description }) {
   ];
   return (
     <section className={cl.intro}>
-      <div className={cl.description}>
+      <article className={cl.description}>
         <h1>{h1}</h1>
         <h2>{h2} </h2>
         <p>{description}</p>
@@ -31,7 +31,7 @@ export default function Intro({ h1, h2, description }) {
             </a>
           ))}
         </div>
-      </div>
+      </article>
       <img src={introSvg} alt="blog decoration" style={{ width: '250px' }} />
     </section>
   );

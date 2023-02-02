@@ -122,7 +122,7 @@ export default function Game() {
   );
 
   return (
-    <div className={cl.wrapper}>
+    <main className={cl.wrapper}>
       <Navigation
         isGameStarted={isGameStarted}
         isStopped={isStopped}
@@ -131,7 +131,7 @@ export default function Game() {
         setIsStopped={setIsStopped}
         themeClass={themeClass}
       />
-      <div className={cl.gameField}>
+      <section className={cl.gameField}>
         {isGameStarted ? (
           <Grid
             snake={snake}
@@ -154,7 +154,7 @@ export default function Game() {
             setIsStopped={setIsStopped}
           />
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

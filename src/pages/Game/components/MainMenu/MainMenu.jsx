@@ -49,7 +49,7 @@ export default function MainMenu({
           }}>
           New Game
         </button>
-        <div className={cl.settings}>
+        <section className={cl.settings}>
           <div className={cl.speed}>
             <h3>Speed:</h3>
             <div className={cl.btn}>
@@ -85,7 +85,7 @@ export default function MainMenu({
               ))}
             </fieldset>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ export default function ThemePreference() {
         key={itm.key}
         className={[[cl.line, cl[theme.cssSelector]].join(' '), cl.indent1].join(' ')}>
         <i>{line.lineNumber + idx}</i>
-        <div className={cl.radio}>
+        <section className={cl.radio}>
           <label htmlFor={itm.key}>
             {itm.label}
             <span className={cl.var}>{theme.key === itm.key ? 'true' : 'false'}</span>
@@ -34,7 +34,7 @@ export default function ThemePreference() {
             onChange={() => radioHandler(itm.key, itm.cssSelector)}
             checked={theme.key === itm.key}
           />
-        </div>
+        </section>
       </div>
     ));
   };

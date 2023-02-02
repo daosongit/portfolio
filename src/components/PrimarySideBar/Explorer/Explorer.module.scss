@@ -25,7 +25,8 @@ $Light-color-text: #616161;
 
 .head {
   display: flex;
-  margin: 20px 0 4px 7px;
+  margin: 20px 0 4px 0;
+  padding-left: 4px;
   align-items: center;
   grid-column-gap: 5px;
   cursor: pointer;
