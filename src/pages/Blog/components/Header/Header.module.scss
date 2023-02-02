@@ -6,23 +6,49 @@
 }
 
 .header {
+  display: flex;
+  grid-column-gap: 3px;
   h1 {
     cursor: pointer;
     font-family: 'Moon Dance', cursive;
     font-weight: 700;
     font-size: 2rem;
   }
-  img {
-    width: 60px;
+
+  a {
+    display: flex;
+    align-items: center;
+  }
+  .rectangle {
+    position: relative;
+    top: 2px;
+    border-top: 9px solid transparent;
+    border-right: 10px solid rgb(83, 7, 170);
+    border-bottom: 9px solid transparent;
+  }
+
+  .hireme {
+    text-align: center;
+    position: relative;
+    top: 2px;
+    font-size: 0.8rem;
+    padding: 2px 5px;
+
+    background: rgb(73, 6, 151);
+    background: linear-gradient(47deg, rgba(73, 6, 151, 1), rgba(117, 16, 164, 1), transparent)
+      rgba(164, 99, 216, 1);
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: rgb(117, 16, 164);
+      transition: background-color 0.5s;
+    }
   }
   @media (max-width: 500px) {
     img {
       display: none;
     }
   }
-  display: flex;
-  align-items: flex-end;
-  grid-column-gap: 3px;
 }
 
 .header.dark-theme {
