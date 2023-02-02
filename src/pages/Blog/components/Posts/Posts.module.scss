@@ -52,7 +52,7 @@
     padding: 0 10px;
 
     figcaption {
-      color: #7526dd;
+      color: rgb(156, 85, 214);
       font-size: 1.2em;
     }
 
@@ -65,14 +65,14 @@
     width: fit-content;
     padding: 0 0 10px 10px;
     border: none;
-    color: #7526dd;
+    color: rgb(156, 85, 214);
     background: none;
     transition: border-bottom 0.2s, color 0.2s;
     font-size: 1.2em;
 
     &:hover {
       cursor: pointer;
-      color: #a51f3e;
+      color: rgb(216, 111, 230);
       transition: color 0.2s;
     }
   }

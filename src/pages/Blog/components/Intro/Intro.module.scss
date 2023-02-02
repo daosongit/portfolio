@@ -24,7 +24,7 @@
 
   h1 {
     font-weight: 700;
-    color: #7526dd;
+    color: rgb(156, 85, 214);
   }
 
   p {
@@ -48,29 +48,40 @@
     font-size: 1rem;
     cursor: pointer;
     border: none;
+    border-radius: 5px;
     padding: 5px 10px;
     color: white;
-  }
+    background: rgb(73, 6, 151);
+    background: linear-gradient(47deg, rgba(73, 6, 151, 1), rgba(117, 16, 164, 1), transparent)
+      rgba(164, 99, 216, 1);
 
-  &.dark-theme button {
-    color: rgb(27, 27, 27);
-  }
+    transition: background-color 0.5s;
 
-  @mixin btn($color, $colorHover) {
-    background-color: $color;
     &:hover {
-      background-color: $colorHover;
-      transition: background-color 0.2s;
+      background-color: black;
+      transition: background-color 0.5s;
     }
   }
 
-  .twitter {
-    @include btn(#1da1f2, #157bba);
+  &.dark-theme button {
+    color: #cccc;
   }
-  .telegram {
-    @include btn(#2ba0d9, #1979a9);
-  }
-  .linkedin {
-    @include btn(#0a66c2, #094e93);
-  }
+
+  // @mixin btn($color, $colorHover) {
+  //   background-color: $color;
+  //   &:hover {
+  //     background-color: $colorHover;
+  //     transition: background-color 0.2s;
+  //   }
+  // }
+
+  // .twitter {
+  //   @include btn(#1da1f2, #157bba);
+  // }
+  // .telegram {
+  //   @include btn(#2ba0d9, #1979a9);
+  // }
+  // .linkedin {
+  //   @include btn(#0a66c2, #094e93);
+  // }
 }
