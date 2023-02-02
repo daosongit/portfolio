@@ -1,10 +1,4 @@
-$Dark-color-primary_bar: #252526;
-$Dark-color-tabs: #2d2d2d;
-$Dark-color-background: #1e1e1e;
-$Dark-color-text: #cccccc;
-$Light-color-primary_bar: #f3f3f3;
-$Light-color-tabs: #ececec;
-$Light-color-text: #616161;
+@use '../../styles/variables' as v;
 
 .tabsWrapper {
   display: flex;
@@ -13,7 +7,7 @@ $Light-color-text: #616161;
   position: absolute;
   top: 0;
   right: 0;
-  background-color: $Dark-color-primary_bar;
+  background-color: v.$Dark-color-primary_bar;
   transition: width linear 0.25s;
 
   &.sidebar {
@@ -23,11 +17,11 @@ $Light-color-text: #616161;
 }
 
 .tabsWrapper.light-theme {
-  background-color: $Light-color-primary_bar;
+  background-color: v.$Light-color-primary_bar;
 
   .linkWrapper {
     color: black;
-    background-color: $Light-color-tabs;
+    background-color: v.$Light-color-tabs;
     border-right: 1px solid white;
 
     &.active {
@@ -35,7 +29,7 @@ $Light-color-text: #616161;
     }
 
     .close {
-      color: $Light-color-text;
+      color: v.$Light-color-text;
       &:hover {
         background-color: rgb(218, 218, 218);
       }
@@ -47,13 +41,13 @@ $Light-color-text: #616161;
   position: relative;
   display: flex;
   align-items: center;
-  border-right: 1px solid $Dark-color-background;
-  color: $Dark-color-text;
-  background-color: $Dark-color-tabs;
+  border-right: 1px solid v.$Dark-color-background;
+  color: v.$Dark-color-text;
+  background-color: v.$Dark-color-tabs;
 
   &.active {
     color: whitesmoke;
-    background-color: $Dark-color-background;
+    background-color: v.$Dark-color-background;
     transition: background-color 0.1s;
   }
 
@@ -64,7 +58,7 @@ $Light-color-text: #616161;
     border: none;
     width: fit-content;
     font-size: 0.7rem;
-    color: $Dark-color-text;
+    color: v.$Dark-color-text;
     position: relative;
     left: -10px;
     padding: 2px 3px;

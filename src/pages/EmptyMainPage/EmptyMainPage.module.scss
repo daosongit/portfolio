@@ -1,7 +1,7 @@
-$color-background: #1e1e1e;
+@use '../../styles/variables' as v;
 
 .emptyPage {
-  background-color: $color-background;
+  background-color: v.$Dark-color-background;
   width: 100%;
   display: flex;
   justify-content: center;

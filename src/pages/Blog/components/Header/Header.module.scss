@@ -1,9 +1,9 @@
+@use '../../../../styles/variables' as v;
+
 @font-face {
   font-family: 'Moon Dance';
   src: url(https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap);
 }
-
-$color-text: #cccccc;
 
 .header {
   h1 {
@@ -27,6 +27,6 @@ $color-text: #cccccc;
 
 .header.dark-theme {
   h1 {
-    color: $color-text;
+    color: v.$Dark-color-text;
   }
 }

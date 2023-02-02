@@ -1,18 +1,30 @@
-$Dark-back-color-settings: #2d2d2d;
+@use '../../styles/variables' as v;
+
+.themeSettings.light-theme {
+  background-color: #dddcdc;
+  border: 1px solid #8f8e8e;
+
+  a {
+    color: black;
+    &:hover {
+      background-color: #d1d3dd;
+    }
+  }
+}
 
 .themeSettings {
   visibility: hidden;
   opacity: 0;
   width: 200px;
   padding: 10px 0;
-  background-color: $Dark-back-color-settings;
+  background-color: #222222;
   position: relative;
-  left: 50px;
-  bottom: 20px;
+  left: 40px;
+  bottom: 10px;
   display: flex;
   justify-content: flex-start;
   border-radius: 5px;
-  box-shadow: -1px -1px 1px rgb(65, 64, 64);
+  border: 1px solid #181818;
 
   &.show {
     visibility: visible;
@@ -23,11 +35,13 @@ $Dark-back-color-settings: #2d2d2d;
   a {
     width: 100%;
     padding: 5px 0 5px 20px;
-    color: grey;
+    color: v.$Dark-color-text;
+    transition: background-color 0.1s;
 
     &:hover {
-      background-color: #4b4b4b;
+      background-color: v.$Dark-color-primary_bar-active;
       cursor: pointer;
+      transition: background-color 0.1s;
     }
   }
 }

@@ -1,4 +1,4 @@
-$color-text: #cccccc;
+@use '../../../../styles/variables' as v;
 
 .navigation {
   display: flex;
@@ -27,7 +27,7 @@ $color-text: #cccccc;
 
     &.dark-theme {
       svg {
-        color: $color-text;
+        color: v.$Dark-color-text;
       }
     }
   }

@@ -1,24 +1,21 @@
-$Dark-color-primary_bar-active: #37373d;
-$Dark-color-text: #cccccc;
-$Light-color-primary_bar-active: #e4e6f1;
-$Light-color-text: #616161;
+@use '../../../styles/variables' as v;
 
 @mixin hovered-item($color) {
   &:hover {
-    background-color: rgba($color, 0.7);
+    background-color: $color;
     transition: background-color 0.1s;
   }
 }
 
 .wrapper.light-theme {
   & .head {
-    @include hovered-item($Light-color-primary_bar-active);
+    @include hovered-item(v.$Light-color-primary_bar-active);
   }
   & .projects a {
-    color: $Light-color-text;
-    @include hovered-item($Light-color-primary_bar-active);
+    color: black;
+    @include hovered-item(v.$Light-color-primary_bar-active);
     &.active {
-      background-color: rgba($Light-color-primary_bar-active, 0.7);
+      background-color: v.$Light-color-primary_bar-active;
     }
   }
 }
@@ -30,7 +27,7 @@ $Light-color-text: #616161;
   align-items: center;
   grid-column-gap: 5px;
   cursor: pointer;
-  @include hovered-item($Dark-color-primary_bar-active);
+  @include hovered-item(v.$Dark-color-primary_bar-active);
 
   h2 {
     font-size: 1.2rem;
@@ -42,12 +39,12 @@ $Light-color-text: #616161;
   grid-row-gap: 2px;
   a {
     display: block;
-    color: $Dark-color-text;
+    color: v.$Dark-color-text;
     cursor: pointer;
-    @include hovered-item($Dark-color-primary_bar-active);
+    @include hovered-item(v.$Dark-color-primary_bar-active);
 
     &.active {
-      background-color: rgba($Dark-color-primary_bar-active, 0.7);
+      background-color: rgba(v.$Dark-color-primary_bar-active, 0.7);
     }
   }
   &.drop {

@@ -1,10 +1,9 @@
+@use '../styles/variables' as v;
+
 @font-face {
   font-family: 'Montserrat';
   src: url(https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap);
 }
-
-$color-background: #1e1e1e;
-$color-text: #cccccc;
 
 .App {
   display: grid;
@@ -13,6 +12,6 @@ $color-text: #cccccc;
 }
 
 .App.dark-theme {
-  color: $color-text;
-  background-color: $color-background;
+  color: v.$Dark-color-text;
+  background-color: v.$Dark-color-background;
 }

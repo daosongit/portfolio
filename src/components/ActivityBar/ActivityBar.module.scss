@@ -1,11 +1,12 @@
-$color-activity_bar: #333333;
+// $color-activity_bar: #333333;
+@use '../../styles/variables' as v;
 
 .bar {
   z-index: 2;
   position: sticky;
   top: 0;
   height: 100vh;
-  background-color: $color-activity_bar;
+  background-color: v.$color-activity_bar;
 }
 
 .list {
@@ -17,7 +18,7 @@ $color-activity_bar: #333333;
     background: none;
     border: none;
     cursor: pointer;
-    border-left: 2px solid $color-activity_bar;
+    border-left: 2px solid v.$color-activity_bar;
 
     svg {
       color: grey;

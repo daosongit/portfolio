@@ -1,4 +1,4 @@
-$color-background: #1e1e1e;
+@use '../../../../styles/variables' as v;
 
 .posts {
   font-family: 'Montserrat', sans-serif;
@@ -38,7 +38,7 @@ $color-background: #1e1e1e;
     }
 
     &.dark-theme {
-      background-color: $color-background;
+      background-color: v.$Dark-color-background;
       &:hover {
         box-shadow: 5px -5px 7px -1px black;
         transition: box-shadow 0.3s;

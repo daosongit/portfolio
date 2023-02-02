@@ -9,18 +9,18 @@ export default function Error() {
   const error = useRouteError();
   console.log(error);
   return (
-    <div className={cl.error}>
+    <main className={cl.error}>
       <button className={cl.btnBack} onClick={() => navigate(-1)}>
         <IcoArrowLeft />
         <label>Go Back</label>
       </button>
-      <div className={cl.content}>
+      <section className={cl.content}>
         <h1>Opps... {error.statusText}:</h1>
         <h2>{error.error.message}</h2>
         <div className={cl.imgWrapper}>
           <img src={errorImg} alt="error gif" />
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

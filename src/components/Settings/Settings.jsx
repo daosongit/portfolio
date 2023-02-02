@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { SlSettings as IcoSetting } from 'react-icons/sl';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addTab } from '../../redux/reducers';
 import cl from './Settings.module.scss';
@@ -20,6 +20,7 @@ export function SettingsButton({ isShown, setShown }) {
 }
 
 export function SettingsMenu({ isShown, setShown }) {
+  const themeClass = useSelector((state) => state.rdcTheme.cssSelector);
   const dispatch = useDispatch();
   const refSettings = useRef();
   useEffect(() => {
@@ -33,7 +34,9 @@ export function SettingsMenu({ isShown, setShown }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refSettings, isShown]);
   return (
-    <div ref={refSettings} className={[cl.themeSettings, isShown ? cl.show : ''].join(' ')}>
+    <div
+      ref={refSettings}
+      className={[cl.themeSettings, cl[themeClass], isShown ? cl.show : ''].join(' ')}>
       <Link
         onClick={() => {
           dispatch(addTab({ tabName: 'theme.json', link: '' }));

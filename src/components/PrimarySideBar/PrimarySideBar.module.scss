@@ -1,6 +1,4 @@
-$Dark-color-primary_bar: #252526;
-$Light-color-primary_bar: #f3f3f3;
-$Light-color-text: #3b3b3b;
+@use '../../styles/variables' as v;
 
 .sidebar {
   z-index: 1;
@@ -20,13 +18,11 @@ $Light-color-text: #3b3b3b;
     left: -250px;
     animation: 0.3s fadeOut;
   }
-  background-color: $Dark-color-primary_bar;
+  background-color: v.$Dark-color-primary_bar;
 
   &.light-theme {
-    color: $Light-color-text;
-    .content {
-      background-color: $Light-color-primary_bar;
-    }
+    color: black;
+    background-color: v.$Light-color-primary_bar;
   }
 }
 
