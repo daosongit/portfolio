@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider, useSelector } from 'react-redux';
-import { createBrowserRouter, RouterProvider, useOutlet } from 'react-router-dom';
+import { createHashRouter, RouterProvider, useOutlet } from 'react-router-dom';
 import { persistor, store } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
@@ -24,7 +24,7 @@ const Root = () => {
   );
 };
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Root />,
